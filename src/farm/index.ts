@@ -45,8 +45,9 @@ const farm = async (name: string) => {
     if (team.isTeamLeader) {
       await shujing()
     }
+  } else {
+    throw new Error(`找不到练级地点：${name}`)
   }
-  throw new Error(`找不到练级地点：${name}`)
 }
 
 export {

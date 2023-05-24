@@ -2,7 +2,7 @@ export enum ItemType {
   Helm = 8,  // 头盔
   Food = 23, // 料理
   Item = 26, // 物品
-  Card = 41, // 图鉴卡片
+  Card = 41, // 图鉴卡片。如果assessed为false，名字会是`卡片？`。
   Posion = 43, // 血瓶
 }
 
@@ -18,7 +18,7 @@ export type Item = {
 const Items: Item[] = [
   { name: '小石像怪的卡片', id: 14836, maxStackCount: 0, sellPrice: -1, type: ItemType.Card, },
   { name: '卡片？', id: 14848, maxStackCount: 0, sellPrice: -1, type: ItemType.Card, description: '未鉴定的卡片，不知道是哪个的' },
-  { name: '卡片？', id: 14875, maxStackCount: 0, sellPrice: -1, type: ItemType.Card, description: '未鉴定的卡片，猜测是树精的' },
+  { name: '树精的卡片', id: 14875, maxStackCount: 0, sellPrice: -1, type: ItemType.Card, },
   { name: '面包', id: 15201, maxStackCount: 3, sellPrice: -1, type: ItemType.Food, },
   { name: '生命力回复药（75）', id: 15605, maxStackCount: 3, sellPrice: -1, type: ItemType.Posion, },
   { name: '魔石', id: 18005, maxStackCount: 0, sellPrice: -1, type: ItemType.Item, description: '绿色的魔石' },

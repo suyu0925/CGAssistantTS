@@ -10,12 +10,21 @@ export type Map = {
 export type DehydratedMap = Partial<Map> | string | number // 脱水的Map，可以再水合回去
 
 export const Maps: Map[] = [
+  { name: '芙蕾雅', index: 100, },
+  { name: '芙蕾雅', index: 100, unique_name: '芙蕾雅西边' },
   { name: '法兰城', index: 1000, },
+  { name: '医院', index: 1112, unique_name: '东医' },
+  { name: '魔女之家', index: 1160, },
   { name: '召唤之间', index: 1530, },
   { name: '回廊', index: 1531, },
-  { name: '医院', index: 1112, unique_name: '东医' },
-  { name: '芙蕾雅', index: 100, },
-  { name: '魔女之家', index: 1160, },
+  { name: '国营第24坑道 地下1楼', index: 11013 },
+  { name: '国营第24坑道 地下1楼', index: 11013, unique_name: '国营第24坑道 地下1楼西边' },
+  { name: '试炼之洞窟 第1层', index: 11006 },
+  { name: '试炼之洞窟 第2层', index: 11007 },
+  { name: '试炼之洞窟 第3层', index: 11008 },
+  { name: '试炼之洞窟 第4层', index: 11009 },
+  { name: '试炼之洞窟 第5层', index: 11010 },
+  { name: '试炼之洞窟 大厅', index: 11011 },
 ]
 
 export type Station = {

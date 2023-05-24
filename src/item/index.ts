@@ -42,7 +42,7 @@ const getSellStoneItems = () => {
 const getPotionRecoveryAmount = (): number => {
   return cga.getInventoryItems()
     .filter(item => item.name.startsWith('生命力回复药'))
-    .map(item => parseInt(item.name.match(/^生命力回复药（(\d+)）/)[1]))
+    .map(item => parseInt(item.name.match(/^生命力回复药（(\d+)）/)[1]) * item.count)
     .reduce((acc, cur) => acc + cur, 0)
 }
 
@@ -87,8 +87,14 @@ const buyPotions = async (amount: number) => {
   await move.falan.toEastHospital()
   await npc.talkToNpc('药剂师波洛姆', npc.DefaultDialogStrategies.FirstOnce)
   cga.BuyNPCStore([{ index: 0, count, }])
-  while (getPotionRecoveryAmount() !== targetAmount) {
+
+  let retry = 0
+  while (getPotionRecoveryAmount() !== targetAmount && retry < 5) {
     await cga.delay(1000)
+    retry += 1
+  }
+  if (retry === 5) {
+    log(`买药失败，当前血瓶回复量: ${getPotionRecoveryAmount()}，目标回复量是${targetAmount}`)
   }
 }
 

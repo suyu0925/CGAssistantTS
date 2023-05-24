@@ -38,10 +38,10 @@ bootstrap()
     //   // [281, 87, '芙蕾雅'], 
     //   [566, 233, '芙蕾雅'],
     // ])
-    // await farm.farm('树精')
+    await farm.farm('树精')
     // await shujing()
     // log(cga.findNPC('魔术师多萨德'))
     // await learnSkill('风刃魔法')
 
-    battle.encounter()
+    // battle.encounter()
   })

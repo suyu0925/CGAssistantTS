@@ -31,6 +31,7 @@ const supplyHpMp = async () => {
   const nurse = profession.isMageClass() ? '资深护士菲儿' : '护士尤美儿'
   await npc.talkToNpc(nurse)
 
+  // TODO: use await waitForHpMpSupply()
   await cga.delay(3000)
 
   if (!needSupply()) {

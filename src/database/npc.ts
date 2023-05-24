@@ -26,7 +26,7 @@ export const Npcs: Npc[] = [
   { name: '资深护士菲儿', station: { map: '东医', x: 6, y: 33 }, id: 8917, model_id: 14152, },
   { name: '药剂师波洛姆', station: { map: '东医', x: 16, y: 35 }, id: 7534, model_id: 14089, },
   { name: '专管称号的阿蒙', station: { map: '法兰城', x: 230, y: 83 }, id: 9168, model_id: 14100, },
-  { name: '神木', station: { map: '芙蕾雅西边', x: 294, y: 146, range: [300, 156] }, id: 8250, model_id: 10085, }, // 魔术
+  { name: '神木', station: { map: '芙蕾雅西边', x: 298, y: 148, range: [300, 156] }, id: 8250, model_id: 10085, }, // 魔术
   { name: '魔术师比尔艾特', station: { map: '魔女之家', x: 22, y: 9 }, id: 9206, model_id: 14044, }, // 学冰冻魔法
   { name: '魔术师班裘', station: { map: '魔女之家', x: 21, y: 8 }, id: 9208, model_id: 14033, }, // 学陨石魔法
   { name: '魔术师多萨德', station: { map: '魔女之家', x: 22, y: 17 }, id: 9210, model_id: 14030, }, // 学火焰魔法

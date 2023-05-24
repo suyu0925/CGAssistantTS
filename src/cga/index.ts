@@ -1,4 +1,4 @@
-import * as battle from '../battle'
+import { loadAutoBattleSettings } from '../battle/settings'
 import { ItemWeakListSettings } from '../item'
 import { AutoSupplyOnTheRoadSettings } from '../supply'
 import { loadSettings } from '../utils'
@@ -14,7 +14,7 @@ const loadBaseSettings = async () => {
   // 物品堆叠
   await loadSettings(ItemWeakListSettings)
   // 自动战斗
-  await loadSettings(battle.settings.NormalAttack)
+  await loadAutoBattleSettings()
   // 自动补给
   await loadSettings(AutoSupplyOnTheRoadSettings)
 }

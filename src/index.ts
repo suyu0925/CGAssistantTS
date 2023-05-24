@@ -15,7 +15,7 @@ import * as farm from './farm'
 import { promisify } from 'util'
 import { shujing } from './farm/shujing'
 import { learnSkill } from './player/skill'
-// import { getSellItemList } from './item'
+import { learnSingleTargetElementSpells } from './request/profession/mage'
 
 bootstrap()
   .then(async () => {
@@ -34,14 +34,14 @@ bootstrap()
     // await prepare()
     // log(cga.getTeamPlayers())
     // await move.walkList([
-    //   // [12, 42, '法兰城'],
-    //   // [281, 87, '芙蕾雅'], 
-    //   [566, 233, '芙蕾雅'],
+    //   [509, 154, '芙蕾雅'],
     // ])
-    await farm.farm('树精')
+    // await farm.farm('树精')
     // await shujing()
-    // log(cga.findNPC('魔术师多萨德'))
-    // await learnSkill('风刃魔法')
+    // await move.falan.toCastle()
+    // await doRequest('就职药剂师')
+    // log(cga.findNPC('狄尔西雅达美'))
+    // await learnSingleTargetElementSpells()
 
-    // battle.encounter()
+    battle.encounter()
   })

@@ -2,7 +2,8 @@ import { talkToNpc } from "../npc"
 import { DefaultDialogStrategies } from "../npc/dialog"
 import { loadSettings } from "../utils"
 import * as battle from '../battle'
-import * as move from "../move"
+import * as move from '../move'
+import * as profession from './profession'
 
 // 死者的戒指
 const ringOfDeath = async () => {
@@ -44,6 +45,9 @@ const doRequest = async (requestName: string) => {
   switch (requestName) {
     case '死者的戒指':
       await ringOfDeath()
+      break
+    case '就职药剂师':
+      await profession.incomingPharmacist()
       break
     default:
       throw new Error(`未知的任务名：${requestName}`)

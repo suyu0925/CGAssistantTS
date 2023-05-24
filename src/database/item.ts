@@ -24,6 +24,7 @@ const Items: Item[] = [
   { name: '魔石', id: 18005, maxStackCount: 0, sellPrice: -1, type: ItemType.Item, description: '绿色的魔石' },
   { name: '魔石', id: 18026, maxStackCount: 0, sellPrice: -1, type: ItemType.Item, description: '蓝色的魔石' },
   { name: '魔石', id: 18047, maxStackCount: 0, sellPrice: -1, type: ItemType.Item, description: '红色的魔石' },
+  { name: '药剂师推荐信', id: 18132, maxStackCount: 0, sellPrice: -1, type: ItemType.Item, },
   { name: '绿头盔', id: 18195, maxStackCount: 0, sellPrice: 0, type: ItemType.Helm, },
   { name: 'OK绷', id: 18220, maxStackCount: 0, sellPrice: 0, type: ItemType.Posion, },
   { name: '水的水晶碎片', id: 18311, maxStackCount: 99, sellPrice: 0, type: ItemType.Item, },
@@ -34,3 +35,4 @@ const Items: Item[] = [
 export {
   Items,
 }
+

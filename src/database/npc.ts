@@ -27,10 +27,16 @@ export const Npcs: Npc[] = [
   { name: '药剂师波洛姆', station: { map: '东医', x: 16, y: 35 }, id: 7534, model_id: 14089, },
   { name: '专管称号的阿蒙', station: { map: '法兰城', x: 230, y: 83 }, id: 9168, model_id: 14100, },
   { name: '神木', station: { map: '芙蕾雅西边', x: 298, y: 148, range: [300, 156] }, id: 8250, model_id: 10085, }, // 魔术
-  { name: '魔术师比尔艾特', station: { map: '魔女之家', x: 22, y: 9 }, id: 9206, model_id: 14044, }, // 学冰冻魔法
-  { name: '魔术师班裘', station: { map: '魔女之家', x: 21, y: 8 }, id: 9208, model_id: 14033, }, // 学陨石魔法
+  { name: '魔术师比尔艾特', station: { map: '魔女之家', x: 22, y: 9 }, id: 9206, model_id: 14044, }, // 学陨石魔法
+  { name: '魔术师班裘', station: { map: '魔女之家', x: 21, y: 8 }, id: 9208, model_id: 14033, }, // 学冰冻魔法
   { name: '魔术师多萨德', station: { map: '魔女之家', x: 22, y: 17 }, id: 9210, model_id: 14030, }, // 学火焰魔法
   { name: '魔术师帕索比亚纳', station: { map: '魔女之家', x: 21, y: 14 }, id: 9212, model_id: 14046, }, // 学风刃魔法
+  { name: '狄尔西雅达美', station: { map: '魔女之家', x: 19, y: 13 }, id: 9441, model_id: 14506, }, // 魔术师就职导师
+  { name: '料理长米其巴', station: { map: '里谢里雅堡厨房', x: 8, y: 6 }, id: 7669, model_id: 14065, },
+  { name: '山男哈葛利特', station: { map: '山男的家', x: 9, y: 3 }, id: 7681, model_id: 14124, }, // 用高级番茄换莫洛草。药剂师就职任务。
+  { name: '山男波波思', station: { map: '山男的家', x: 10, y: 7 }, id: 9407, model_id: 14121, }, // 学习伐木
+  { name: '看护实习生德拉格', station: { map: '圣村医院', x: 8, y: 4 }, id: 7679, model_id: 14117, }, // 用莫洛草换药剂师就职推荐信。药剂师就职任务。
+  { name: '药剂师柯尼', station: { map: '圣村医院 2楼', x: 12, y: 5 }, id: 9491, model_id: 14027, }, // 药剂师就职导师
 ]
 
 const findNearbyNpc = (name: string): Npc | null => {

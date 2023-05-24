@@ -1,8 +1,16 @@
-import { SystemFlag, cga } from '../cga'
+import { RequestType, SystemFlag, cga } from '../cga'
 import { Station } from '../database/map'
 import * as move from '../move'
 import * as player from '../player'
 import { log } from '../utils'
+
+const isInTeam = () => {
+  return cga.getTeamPlayers().length > 0
+}
+
+const joinTeam = () => {
+  cga.DoRequest(RequestType.REQUEST_TYPE_JOINTEAM)
+}
 
 const getDefaultTeamLeader = () => {
   const playerName = cga.GetPlayerInfo().name
@@ -21,6 +29,20 @@ const isTeamLeader = () => {
   return cga.getTeamPlayers().length > 0 && cga.getTeamPlayers()[0].name === cga.GetPlayerInfo().name
 }
 
+const waitForJoin = async (name: string) => {
+  while (!isInTeam()) {
+    const playerUnit = cga.findPlayerUnit(name)
+    const mypos = cga.GetMapXY()
+    if (playerUnit == null || !cga.isDistanceClose(playerUnit.xpos, playerUnit.ypos, mypos.x, mypos.y) || (playerUnit.xpos == mypos.x && playerUnit.ypos == mypos.y)) {
+      // keep waiting
+    } else {
+      cga.turnTo(playerUnit.xpos, playerUnit.ypos)
+      joinTeam()
+    }
+    await cga.delay(1000)
+  }
+}
+
 const buildTeam = async (teamLeader: string | null, station: Station) => {
   teamLeader = teamLeader ?? getDefaultTeamLeader()
 
@@ -32,8 +54,7 @@ const buildTeam = async (teamLeader: string | null, station: Station) => {
   } else {
     await move.faceToStation(station)
     log(`等待队长${teamLeader}出现`)
-    await player.waitForPlayer(teamLeader)
-    player.joinTeam()
+    await waitForJoin(teamLeader)
     log(`加入队伍`)
   }
 

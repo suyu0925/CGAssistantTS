@@ -17,6 +17,7 @@ const ItemDropListSettings = {
 const ItemDropListForNotBattleClassSettings = {
   itemdroplist: [
     '#18311', // 水的水晶碎片
+    '#18312', // 火的水晶碎片
     '#18313', // 风的水晶碎片
   ]
 }
@@ -42,7 +43,7 @@ const farm = async (name: string) => {
   if (name === '树精') {
     await move.falan.toStone('E')
     await team.buildTeam(null, Stations['东门'])
-    if (team.isTeamLeader) {
+    if (team.isTeamLeader()) {
       await shujing()
     }
   } else {

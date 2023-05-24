@@ -1,3 +1,5 @@
+import { Skill } from '../../player/skill'
+
 export type BattleAction = {
   "condition": 0,
   "condition2": 0,
@@ -10,7 +12,9 @@ export type BattleAction = {
   "petskillname": "攻击",
   "pettarget": 0,
   "pettargetsel": 0,
-  "playeraction": 1,
+  "playeraction": 1 | 100, // 1是普攻，100代表使用技能
+  playerskilllevel?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 // 0代表使用最高级的技能
+  playerskillname?: Skill
   "playertarget": 0,
   "playertargetsel": 0
 }

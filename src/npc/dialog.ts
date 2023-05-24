@@ -29,6 +29,9 @@ const skipDialog = async (dlg: Dialog): Promise<boolean> => {
 
 const confirmDialog = async (dlg: Dialog): Promise<boolean> => {
   switch (dlg.options) {
+    case 2:
+      cga.ClickNPCDialog(0, -1) // 学习技能
+      return true
     case 3:
       cga.ClickNPCDialog(1, -1)
       return true
@@ -53,6 +56,26 @@ const denyDialog = async (dlg: Dialog) => {
   }
 }
 
+const firstOptionDialog = async (dlg: Dialog) => {
+  switch (dlg.options) {
+    case 0:
+      cga.ClickNPCDialog(0, 0)
+      return true
+    default:
+      return await skipDialog(dlg)
+  }
+}
+
+const secondOptionDialog = async (dlg: Dialog) => {
+  switch (dlg.options) {
+    case 0:
+      cga.ClickNPCDialog(0, 1)
+      return true
+    default:
+      return await skipDialog(dlg)
+  }
+}
+
 const DefaultDialogStrategies = {
   Next: { count: -1, func: skipDialog },
   Confirm: { count: -1, func: confirmDialog },
@@ -60,6 +83,8 @@ const DefaultDialogStrategies = {
   NextOnce: { count: 1, func: skipDialog },
   ConfirmOnce: { count: 1, func: confirmDialog },
   DenyOnce: { count: 1, func: denyDialog },
+  FirstOnce: { count: 1, func: firstOptionDialog },
+  SecondOnce: { count: 1, func: secondOptionDialog }
 }
 
 export {

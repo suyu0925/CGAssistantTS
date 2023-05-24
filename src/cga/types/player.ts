@@ -1,3 +1,7 @@
+export type HealthStatus =
+  | 0 // 正常
+  | 100 // 黄伤？
+
 export type PlayerInfo = {
   hp: 205,
   maxhp: 205,
@@ -5,7 +9,7 @@ export type PlayerInfo = {
   maxmp: 168,
   xp: 21160,
   maxxp: 28561,
-  health: 0,
+  health: HealthStatus,
   souls: 0,
   level: 12,
   gold: 251,
@@ -88,6 +92,30 @@ export type PlayerInfo = {
   }
 }
 
+export type PlayerUnitInfo = {
+  valid: 2,
+  type: 8,
+  model_id: 100152,
+  unit_id: 26780,
+  xpos: number // 玩家x坐标。如：564,
+  ypos: number // 玩家y坐标。如：232,
+  item_count: 0,
+  injury: 0,
+  icon: 0,
+  level: 7,
+  flags: 256,
+  unit_name: string // 玩家名称。如：'=一条柴=',
+  nick_name: '',
+  title_name: '',
+  item_name: '鼠娃娃兑换券'
+}
+
+export type PlayerSkill = {
+  
+}
+
 export interface IPlayerApi {
   GetPlayerInfo: () => PlayerInfo
+  findPlayerUnit: (name: string) => PlayerUnitInfo
+  findPlayerSkill: (name: string) => PlayerSkill
 }

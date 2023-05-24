@@ -4,9 +4,9 @@ export type PositionXY = {
 }
 
 export type MapIndex = {
-  index1: number
-  index2: number
-  index3: number
+  index1: number // 0：牧羊
+  index2: number // 5: V线
+  index3: number // 地图索引
 }
 
 export type MapName = string

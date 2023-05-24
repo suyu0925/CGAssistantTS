@@ -1,9 +1,23 @@
-import { promisify } from 'util'
+import * as battle from '../battle'
+import { ItemWeakListSettings } from '../item'
+import { AutoSupplyOnTheRoadSettings } from '../supply'
+import { loadSettings } from '../utils'
 import { ICgaApi } from './types'
 
 export * from './types'
 
 export let cga: ICgaApi
+
+const loadBaseSettings = async () => {
+  // 开启说话防掉线
+  await loadSettings({ player: { antiafkkick: true, } })
+  // 物品堆叠
+  await loadSettings(ItemWeakListSettings)
+  // 自动战斗
+  await loadSettings(battle.settings.NormalAttack)
+  // 自动补给
+  await loadSettings(AutoSupplyOnTheRoadSettings)
+}
 
 export const bootstrap = async (): Promise<ICgaApi> => {
   await new Promise(resolve => {
@@ -12,10 +26,6 @@ export const bootstrap = async (): Promise<ICgaApi> => {
       resolve(cga)
     })
   })
-  await promisify(cga.gui.LoadSettings)({
-    player: {
-      antiafkkick: true,
-    }
-  })
+  await loadBaseSettings()
   return cga
 }

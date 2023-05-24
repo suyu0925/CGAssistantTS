@@ -1,9 +1,10 @@
 import { cga } from '../cga'
 import { PositionXY } from '../cga/types/map'
 
+// 8个数字代表8个方向。参见数字小键盘区。
 export type Orientation =
   | 7 | 8 | 9
-  | 4 | 6
+  | 4/**/ | 6
   | 1 | 2 | 3
 
 export const getOppositeOrientation = (o: Orientation): Orientation => {

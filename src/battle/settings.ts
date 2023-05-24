@@ -1,5 +1,6 @@
 import { GuiSetting } from '../cga/types/gui'
 
+// 人宠普攻
 const NormalAttack: Partial<GuiSetting> = {
   battle: {
     autobattle: true,

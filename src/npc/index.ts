@@ -3,7 +3,7 @@ import { Dialog } from '../cga/types/dialog'
 import { DehydratedNpc, hydrateNpc } from '../database/npc'
 import { faceToNPC } from '../move'
 import { log } from '../utils'
-import { DialogStrategy, waitNPCDialog } from './dialog'
+import { DefaultDialogStrategies, DialogStrategy, waitNPCDialog } from './dialog'
 
 
 class StrategyPool {
@@ -17,7 +17,7 @@ class StrategyPool {
   }
 
   async solve(dlg: Dialog) {
-    console.log('solve', this.current)
+    log('solve', this.current)
     if (this.current === null) {
       return false
     }
@@ -65,7 +65,7 @@ const talkToNpc = async (hydratedNpc: DehydratedNpc, strategy?: DialogStrategy[]
   while (true) {
     try {
       const dlg = await waitNPCDialog()
-      console.log(dlg)
+      log(dlg)
       let solved = false
       if (pool) {
         solved = await pool.solve(dlg)
@@ -87,5 +87,7 @@ const talkToNpc = async (hydratedNpc: DehydratedNpc, strategy?: DialogStrategy[]
 export {
   faceToNPC,
   talkToNpc,
+  waitNPCDialog,
+  DefaultDialogStrategies,
 }
 

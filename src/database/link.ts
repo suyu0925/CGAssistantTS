@@ -2,7 +2,7 @@ import { DehydratedMap, Station, getCurrentMap, isSameMap } from './map'
 
 export type Link = {
   from: DehydratedMap
-  to: DehydratedMap
+  to: DehydratedMap | Station
   walk?: [number, number]
   sayWords?: [number, number, string]
 }
@@ -12,6 +12,8 @@ export const Links: Link[] = [
   { from: '回廊', to: '召唤之间', walk: [44, 15], },
   { from: '回廊', to: '灵堂', walk: [23, 19], },
   { from: '灵堂', to: '回廊', walk: [31, 48], },
+  { from: '芙蕾雅', to: { map: '法兰城', x: 227, y: 88 }, walk: [470, 196], },
+  { from: '法兰城', to: { map: '芙蕾雅西边', x: 374, y: 195 }, walk: [22, 88], },
 ]
 
 export const searchLinks = (from: DehydratedMap): Link[] => {
@@ -25,7 +27,11 @@ export const searchLinks = (from: DehydratedMap): Link[] => {
 }
 
 const recursiveFindPath = (dest: DehydratedMap, path: Link[]): [boolean, Link[]] => {
-  const latestMap = path[path.length - 1].to
+  const latestTo = path[path.length - 1].to
+  const latestMap =
+    (typeof latestTo === 'object' && (latestTo as Station).map)
+      ? (latestTo as Station).map
+      : latestTo as DehydratedMap
   if (isSameMap(latestMap, dest)) {
     return [true, path]
   }

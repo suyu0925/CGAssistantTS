@@ -19,7 +19,7 @@ import { shujing } from './farm/shujing'
 import { learnSkill } from './player/skill'
 import { learnSingleTargetElementSpells } from './request/profession/mage'
 import * as request from './request'
-import { LoggingYinduQingmu } from './gather/logging'
+import { ChopYinduQingmu } from './gather/chopping'
 
 bootstrap()
   .then(async () => {
@@ -47,10 +47,12 @@ bootstrap()
     // await shujing()
     // await move.falan.toCastle()
     // await doRequest('就职药剂师')
-    // log(cga.findNPC('樵夫荷拉巴斯'))
+    // log(cga.findNPC('士兵亚瑟尔'))
     // await request.profession.incomingWoodcutter()
-    await gather.honeSkill('伐木')
+    // await gather.honeSkill('伐木')
     // await learnSingleTargetElementSpells()
+
+    await doRequest('死者的戒指')
 
     // battle.encounter()
   })

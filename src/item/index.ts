@@ -60,18 +60,33 @@ const sellNpcStone = async (dlg: Dialog) => {
   log('卖完魔石啦')
 }
 
+const getSellCount = (item: InventoryItem) => {
+  const itemDb = Items.find(i => i.name === item.name)
+  // 无法堆叠的物品，卖店组数为1
+  if (itemDb.maxStackCount <= 1) {
+    return 1
+  } else {
+    if (itemDb.sellStackCount) {
+      return Math.floor(item.count / itemDb.sellStackCount)
+    } else {
+      throw new Error(`物品${item}允许堆叠，但未给出卖店折叠数`)
+    }
+  }
+}
+
 const sellNpcItems = async (dlg: Dialog, filter: (item: InventoryItem) => boolean) => {
   const numOpt = dlg.message.charAt(dlg.message.length - 1)
   cga.ClickNPCDialog(0, numOpt == '3' ? 1 : 0)
 
   dlg = await npc.waitNPCDialog()
-  cga.SellNPCStore(cga.getInventoryItems()
+  const itemsForSell = cga.getInventoryItems()
     .filter(filter)
     .map(item => ({
       itempos: item.pos,
       itemid: item.itemid,
-      count: Math.max(item.count, 1),
-    })))
+      count: getSellCount(item),
+    }))
+  cga.SellNPCStore(itemsForSell)
 
   while (cga.getInventoryItems().filter(filter).length > 0) {
     await cga.delay(1000)
@@ -96,14 +111,24 @@ const sellItems = async (items: string[]) => {
       // 不在道具数据库中的物品不卖
       return false
     }
-    return items.includes(item.name) && item.count >= itemDb.maxStackCount
+    if (itemDb.sellPrice <= 0) {
+      // 数据库里没标价格的不卖
+      return false
+    }
+    if (itemDb.sellStackCount && item.count < itemDb.sellStackCount) {
+      // 不到卖店数量的不卖
+      return false
+    }
+    return items.includes(item.name)
   }
   if (cga.getInventoryItems().filter(filter).length === 0) {
     log(`没有${items}要卖`)
     return
   }
 
-  await move.falan.toStone('S')
+  if (cga.GetMapName() !== '法兰城' || cga.getDistance(155, 125, cga.GetMapXY().x, cga.GetMapXY().y) > 30) {
+    await move.falan.toStone('S')
+  }
   await move.walkList([[155, 125, '法兰城']])
   const dlg = await npc.talkToNpc('平民防具贩售处')
   await sellNpcItems(dlg, filter)

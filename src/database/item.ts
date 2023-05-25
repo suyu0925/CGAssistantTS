@@ -11,13 +11,14 @@ export type Item = {
   name: string
   id: number
   maxStackCount: number // 最大堆叠数量，不能堆叠为0或1均可。
+  sellStackCount?: number // 卖店时一组的堆叠数量，大部分采集材料卖店一组以20为单位，但背包里是40。
   sellPrice: number // 卖出价格，不能卖为0。-1代表不知道价格需要收集。
   type: ItemType // 物品类型
   description?: string
 }
 
 const Items: Item[] = [
-  { name: '印度轻木', id: 10000, maxStackCount: 40, sellPrice: 28, type: ItemType.Wood, },
+  { name: '印度轻木', id: 10000, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.Wood, },
   { name: '小石像怪的卡片', id: 14836, maxStackCount: 0, sellPrice: -1, type: ItemType.Card, },
   { name: '卡片？', id: 14848, maxStackCount: 0, sellPrice: -1, type: ItemType.Card, description: '未鉴定的卡片，不知道是哪个的' },
   { name: '树精的卡片', id: 14875, maxStackCount: 0, sellPrice: -1, type: ItemType.Card, },
@@ -35,8 +36,8 @@ const Items: Item[] = [
   { name: '水的水晶碎片', id: 18311, maxStackCount: 99, sellPrice: 0, type: ItemType.Item, },
   { name: '火的水晶碎片', id: 18312, maxStackCount: 99, sellPrice: 0, type: ItemType.Item, },
   { name: '风的水晶碎片', id: 18313, maxStackCount: 99, sellPrice: 0, type: ItemType.Item, },
-  { name: '竹子', id: 18204, maxStackCount: 20, sellPrice: 24, type: ItemType.Wood, },
-  { name: '孟宗竹', id: 18206, maxStackCount: 20, sellPrice: 28, type: ItemType.Wood, },
+  { name: '竹子', id: 18204, maxStackCount: 20, sellStackCount: 20, sellPrice: 24, type: ItemType.Wood, },
+  { name: '孟宗竹', id: 18206, maxStackCount: 20, sellStackCount: 20, sellPrice: 28, type: ItemType.Wood, },
 ]
 
 export {

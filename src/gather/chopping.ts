@@ -9,7 +9,7 @@ const LoggingProducts = [
   { name: '印度轻木', station: { name: '芙蕾雅西边', x: 362, y: 184 }, level: 1 },
 ]
 
-const LoggingZhuzi = async () => {
+const ChopZhuzi = async () => {
   await prepare()
 
   // 去竹子点砍满包
@@ -25,7 +25,7 @@ const LoggingZhuzi = async () => {
   }
 }
 
-const LoggingYinduQingmu = async () => {
+const ChopYinduQingmu = async () => {
   await prepare()
 
   // 去印度轻木点砍满包
@@ -42,5 +42,5 @@ const LoggingYinduQingmu = async () => {
 }
 
 export {
-  LoggingYinduQingmu,
+  ChopYinduQingmu,
 }

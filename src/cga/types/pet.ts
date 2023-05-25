@@ -49,13 +49,15 @@ export type PetInfo = {
   }
 }
 
-export type PetState =
-  | 1 // 待命
-  | 2 // 战斗
-  | 3 // 休息
-  | 16 // 宠物散步
+export enum PetState {
+  STANDBY = 1,
+  BATTLE = 2,
+  REST = 3,
+  WALK = 16,
+}
 
 export interface IPetApi {
   GetPetInfo: (petId: PetId) => PetInfo
+  GetPetsInfo: () => PetInfo[]
   ChangePetState: (pos: number, state: PetState) => void
 }

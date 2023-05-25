@@ -25,4 +25,6 @@ export interface IItemApi {
   getInventoryItems: () => InventoryItem[]
   SellNPCStore: (sellItems: SellItem[]) => void
   BuyNPCStore: (buyItems: BuyItem[]) => void
+  DropItem: (itemPos: number) => void
+  UseItem: (itemPos: number) => void
 }

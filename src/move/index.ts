@@ -57,6 +57,7 @@ const faceToStation = async (station: Station) => {
     await walkTo(movablePositionsAround[0].x, movablePositionsAround[0].y)
     cga.turnTo(station.x, station.y)
   } else {
+    throw new Error('not implemented')
     const path = await findPathToStation(station)
     const firstTo = path[0].to
     const firstMap =

@@ -4,6 +4,7 @@ import { loadSettings } from "../utils"
 import * as battle from '../battle'
 import * as move from '../move'
 import * as profession from './profession'
+import { PetState, cga } from "../cga"
 
 // 死者的戒指
 const ringOfDeath = async () => {
@@ -28,7 +29,6 @@ const ringOfDeath = async () => {
   ])
   await talkToNpc('王宫召唤士盖兹', DefaultDialogStrategies.Confirm)
 
-  // TODO: 需补充NPC国王和士兵亚瑟尔，以及地图偈见之间和里谢里雅堡 2楼
   // 4. 拿给国王，交换赏赐状
   await move.waitForMapChanged('偈见之间')
   await talkToNpc('国王', DefaultDialogStrategies.Confirm)
@@ -36,9 +36,22 @@ const ringOfDeath = async () => {
   // 5. 拿给士兵，得到宠物
   await move.walkList([
     [8, 19, '里谢里雅堡 2楼'],
-    [47, 78, ''], // 士兵面前
+    [47, 78, undefined], // 士兵面前
   ])
   await talkToNpc('士兵亚瑟尔', DefaultDialogStrategies.Confirm)
+  while (!cga.GetPetsInfo().find(pet => pet.realname === '小蝙蝠' || pet.realname === '使魔')) {
+    await cga.delay(1000)
+  }
+
+  // 6. 设置宠物为战斗状态
+  cga.ChangePetState(0, PetState.BATTLE)
+
+  // 7. 装备送的国民装
+  cga.getInventoryItems().forEach(item => {
+    if (['国民衫', '国民鞋', '新手标志'].includes(item.name) && item.pos >= 8) {
+      cga.UseItem(item.pos)
+    }
+  })
 }
 
 const doRequest = async (requestName: string) => {

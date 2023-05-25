@@ -28,6 +28,8 @@ export const Npcs: Npc[] = [
   { name: '操作说明', station: { map: '回廊', x: 47, y: 9 }, id: 7856, model_id: 14071, },
   { name: '战斗说明', station: { map: '回廊', x: 23, y: 25 }, id: 7857, model_id: 14058, },
   { name: '测试者', station: { map: '灵堂', x: 54, y: 2 }, id: 7988, model_id: 17092, },
+  { name: '国王', station: { map: '偈见之间', x: 7, y: 3 }, id: 8057, model_id: 14052, },
+  { name: '士兵亚瑟尔', station: { map: '里谢里雅堡 2楼', x: 47, y: 79 }, id: 8061, model_id: 14062, },
   { name: '士兵伊岱鲁', station: { map: '灵堂', x: 9, y: 8 }, timeOfDay: ['dawn', 'twilight'], id: 8311, model_id: 14058, }, // 灵堂看门人。黄昏和黎明时出现
   { name: '士兵托葛利', station: { map: '灵堂', x: 11, y: 4 }, id: 8313, model_id: 14059, }, // 负责放人从灵堂内侧出来
   { name: '神木', station: { map: '芙蕾雅西边', x: 298, y: 148, range: [300, 156] }, timeOfDay: 'night', id: 8250, model_id: 10085, }, // 魔术

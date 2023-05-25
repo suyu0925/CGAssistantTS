@@ -48,6 +48,10 @@ export const Links: Link[] = [
   { from: '里谢里雅堡 1楼', to: '里谢里雅堡厨房', walk: [103, 22], },
   { from: '里谢里雅堡厨房', to: '里谢里雅堡 1楼', walk: [8, 16], },
   { from: '里谢里雅堡', to: '召唤之间', walk: [47, 85], },
+  { from: '偈见之间', to: '里谢里雅堡 2楼', walk: [9, 19], },
+  { from: '里谢里雅堡 2楼', to: '偈见之间', walk: [50, 22], },
+  { from: '里谢里雅堡 2楼', to: '里谢里雅堡 1楼', walk: [49, 80], },
+  { from: '里谢里雅堡 1楼', to: '里谢里雅堡 2楼', walk: [74, 19], },
 ]
 
 export const searchLinks = (from: DehydratedMap): Link[] => {

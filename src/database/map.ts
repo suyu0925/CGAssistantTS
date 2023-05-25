@@ -21,8 +21,10 @@ export const Maps: Map[] = [
   { name: '魔女之家', index: 1160, },
   { name: '里谢里雅堡', index: 1500, },
   { name: '厨房', index: 1502, unique_name: '里谢里雅堡厨房' },
+  { name: '偈见之间', index: 1511, },
   { name: '里谢里雅堡 1楼', index: 1520, },
-  { name: '召唤之间', index: 1530, },
+  { name: '里谢里雅堡 2楼', index: 1521, },
+  { name: '召唤之间', index: 1530, }, // 为什么还会有1537？难道召唤之间的index也是动态的吗？
   { name: '回廊', index: 1531, },
   { name: '封印之间', index: 1538, },
   { name: '城内的地下迷宫1楼', index: -1, },
@@ -74,7 +76,7 @@ export const isHybratedMap = (map: DehydratedMap): boolean => {
 export const isSameMap = (dehydratedSource: DehydratedMap, dehydratedTarget: DehydratedMap) => {
   const source = hydrateMap(dehydratedSource)
   const target = hydrateMap(dehydratedTarget)
-  if ((source.unique_name && source.unique_name === target.unique_name)
+  if (((source.unique_name ?? source.name) === (target.unique_name ?? target.name))
     || (source.index === target.index)) {
     return true
   } else {

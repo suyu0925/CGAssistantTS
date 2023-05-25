@@ -58,9 +58,9 @@ bootstrap()
     // await cureByself()
 
     // 采集系
-    // await gather.honeSkill('伐木', ChopType.Vanilla)
+    await gather.honeSkill('伐木', ChopType.Vanilla)
     // await trade.sellItems(['蕃茄', '鸡蛋'])
-    await gather.honeSkill('狩猎')
+    // await gather.honeSkill('狩猎')
     // await trade.sellItems(['苹果薄荷', '柠檬草'])
     // await chopVanilla(2)
 

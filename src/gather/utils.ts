@@ -2,6 +2,7 @@ import { HealthStatus, cga } from '../cga'
 import { ItemType, Items } from '../database/item'
 import * as farm from '../farm'
 import * as item from '../item'
+import { supplyHpMp } from '../supply/hpmp'
 import { cureByself } from '../supply/injury'
 import { getSettings, loadSettings, log } from '../utils'
 
@@ -32,6 +33,9 @@ const waitForBagFullSafely = async (gathering: '伐木' | '挖矿' | '狩猎') =
 
 const prepare = async () => {
   await farm.prepare()
+  // 补完魔如果受轻伤自己治一下，治完再次补魔
+  await cureByself()
+  await supplyHpMp()
 }
 
 const loadGatheringSettings = async () => {

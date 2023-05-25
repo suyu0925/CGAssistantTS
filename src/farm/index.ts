@@ -8,11 +8,9 @@ import * as team from '../team'
 import { getSettings, loadSettings } from '../utils'
 import { shujing } from './shujing'
 
-const ItemDropListSettings = {
-  itemdroplist: [
-    '#18195', // 人见人嫌的绿头盔
-  ]
-}
+const CommonItemDropList = [
+  '#18195', // 人见人嫌的绿头盔
+]
 
 // 非战斗系不要留水晶碎片占格子
 const ItemDropListForNotBattleClass = [
@@ -22,14 +20,15 @@ const ItemDropListForNotBattleClass = [
 ]
 
 const loadingItemDropList = async () => {
-  await loadSettings(ItemDropListSettings)
+  let itemDropList = CommonItemDropList
   if (!profession.isBattleClass()) {
-    const { itemdroplist } = await getSettings()
-    await loadSettings({
-      itemdroplist:
-        Array.from(new Set(itemdroplist.concat(ItemDropListForNotBattleClass)))
-    })
+    itemDropList = itemDropList.concat(ItemDropListForNotBattleClass)
   }
+  const { itemdroplist } = await getSettings()
+  await loadSettings({
+    itemdroplist:
+      Array.from(new Set(itemdroplist.concat(itemDropList)))
+  })
 }
 
 const prepare = async () => {

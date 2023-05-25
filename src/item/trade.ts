@@ -87,10 +87,18 @@ const sellNpcStone = async (dlg: Dialog) => {
   dlg = await npc.waitNPCDialog()
   cga.SellNPCStore(getSellStoneItems())
 
-  while (getSellStoneItems().length > 0) {
+  // 有时候会卡在这里，设个最大重试次数吧
+  let retry = 0
+  while (getSellStoneItems().length > 0 && retry < 3) {
     await cga.delay(1000)
+    retry += 1
   }
-  log('卖完魔石啦')
+
+  if (getSellStoneItems().length > 0) {
+    log(`卡住了，没卖成`)
+  } else {
+    log('卖完魔石啦')
+  }
 }
 
 const getSellCount = (item: InventoryItem) => {

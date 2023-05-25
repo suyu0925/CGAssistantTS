@@ -16,17 +16,17 @@ const honeSkill = async (skill: string, subtype?: any) => {
         await chopWood(1)
       } else if (subtype === ChopType.Vanilla) {
         await trade.sellItems(['苹果薄荷', '柠檬草'])
-        await chopVanilla(1)
+        await chopVanilla(2)
       } else {
         throw new Error(`请指定伐木的ChopType`)
       }
     } else if (skill === '狩猎') {
-      await trade.sellItems(['蕃茄', '鸡蛋'])
+      await trade.sellItems(['蕃茄', '鸡蛋', '鹿皮'])
       await hunting('蕃茄')
     }
 
-    if (cga.GetPlayerInfo().health !== HealthStatus.Normal) {
-      log(`受伤了，收手吧阿祖`)
+    if (cga.GetPlayerInfo().health > HealthStatus.Yellow) {
+      log(`受受伤了，收手吧阿祖`)
       break
     }
   }

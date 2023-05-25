@@ -18,6 +18,12 @@ const hunting = async (name: string) => {
       [281, 88, '芙蕾雅'],
       [551, 163, undefined],
     ])
+  } else if (name === '鸡蛋') {
+    await move.falan.toStone('E')
+    await move.walkList([
+      [281, 88, '芙蕾雅'],
+      [551, 163, undefined],
+    ])
   } else {
     throw new Error('not implemented')
   }

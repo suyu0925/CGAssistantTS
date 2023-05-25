@@ -58,7 +58,7 @@ class StrategyPool {
 const talkToNpc = async (hydratedNpc: DehydratedNpc, strategy?: DialogStrategy[] | DialogStrategy): Promise<Dialog | undefined> => {
   const npc = hydrateNpc(hydratedNpc)
   await faceToNPC(npc)
-  cga.TurnTo(npc.station.x, npc.station.y)
+  cga.turnTo(npc.station.x, npc.station.y)
 
   const pool = strategy ? new StrategyPool(strategy) : undefined
 

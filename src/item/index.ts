@@ -41,7 +41,7 @@ const autoDropLowPriceItems = async () => {
   if (cga.GetPlayerInfo().gold > 1000) {
     // 当身上钱超过1000时，就不要12块钱的石头了
     const lowPriceStones = Items
-      .filter(item => item.name === '魔石' && item.sellPrice < 48)
+      .filter(item => item.name === '魔石' && item.sellPrice === 12)
       .map(item => `#${item.id}`)
     const { itemdroplist } = await getSettings()
     await loadSettings({

@@ -125,7 +125,6 @@ const sellItems = async (items: string[]) => {
     log(`没有${items}要卖`)
     return
   }
-
   if (cga.GetMapName() !== '法兰城' || cga.getDistance(155, 125, cga.GetMapXY().x, cga.GetMapXY().y) > 30) {
     await move.falan.toStone('S')
   }

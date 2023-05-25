@@ -1,8 +1,15 @@
 import { Skill } from "../../player/skill"
 
-export type HealthStatus =
-  | 0 // 正常
-  | 100 // 黄伤？
+export enum HealthStatus {
+  Normal = 0,
+  White = 8,
+  Yellow = 100,
+}
+
+export enum MenuColor {
+  Green = 0,
+  White = 4,
+}
 
 export type PlayerInfo = {
   hp: 205,
@@ -125,10 +132,33 @@ export type PlayerSkill = {
   slotsize: number // 占了技能栏几格位置。如：3
 }
 
+export type PlayerMenu = {
+  name: string
+  color: number // 0代表本人的绿色？
+  index: number
+}
+
+export type UnitMenu =  {
+  name: string // 单位的名称。如：'=四条柴=', '小蝙蝠'
+  level: number // 单位的等级。如：9
+  health: number // 单位的健康状况。如：HealthStatus.White
+  hp: number
+  maxhp: number
+  mp: number
+  maxmp: number
+  color: MenuColor // 菜单颜色。比如自己是MenuColor.Green。
+  index: number
+}
+
 export interface IPlayerApi {
   GetPlayerInfo: () => PlayerInfo
   findPlayerUnit: (name: string) => PlayerUnitInfo
   findPlayerSkill: (name: string) => PlayerSkill
+  GetSkillsInfo: () => PlayerSkill[]
 
   StartWork: (skillIndex: number, craftIndex: number) => void
+  AsyncWaitPlayerMenu: (cb: (err: Error, players: PlayerMenu[]) => void) => void
+  PlayerMenuSelect: (index: number) => void
+  AsyncWaitUnitMenu: (cb: (err: Error, units: UnitMenu[]) => void) => void
+  UnitMenuSelect: (index: number) => void
 }

@@ -10,6 +10,7 @@ import { shujing } from './shujing'
 
 const ItemDropListSettings = {
   itemdroplist: [
+    '#18195', // 人见人嫌的绿头盔
   ]
 }
 

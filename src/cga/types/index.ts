@@ -1,4 +1,5 @@
 import { IConfigApi } from './config'
+import { ICraftApi } from './craft'
 import { IDialogApi } from './dialog'
 import { IGuiApi } from './gui'
 import { IItemApi } from './item'
@@ -12,6 +13,7 @@ import { ITeamApi } from './team'
 import { ITravelApi } from './travel'
 
 export * from './config'
+export * from './craft'
 export * from './dialog'
 export * from './gui'
 export * from './item'
@@ -36,6 +38,7 @@ export interface ICgaApi extends
   IMoveApi,
   ISystemApi,
   IPetApi,
-  IItemApi {
+  IItemApi,
+  ICraftApi {
   delay: (ms: number) => Promise<void>
 }

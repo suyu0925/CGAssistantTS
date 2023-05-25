@@ -56,4 +56,5 @@ const doRequest = async (requestName: string) => {
 
 export {
   doRequest,
+  profession,
 }

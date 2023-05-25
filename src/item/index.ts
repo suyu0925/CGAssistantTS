@@ -1,5 +1,6 @@
-import { cga } from '../cga'
+import { InventoryItem, cga } from '../cga'
 import { Dialog } from '../cga/types/dialog'
+import { Items } from '../database/item'
 import * as move from '../move'
 import * as npc from '../npc'
 import { log } from '../utils'
@@ -59,6 +60,24 @@ const sellNpcStone = async (dlg: Dialog) => {
   log('卖完魔石啦')
 }
 
+const sellNpcItems = async (dlg: Dialog, filter: (item: InventoryItem) => boolean) => {
+  const numOpt = dlg.message.charAt(dlg.message.length - 1)
+  cga.ClickNPCDialog(0, numOpt == '3' ? 1 : 0)
+
+  dlg = await npc.waitNPCDialog()
+  cga.SellNPCStore(cga.getInventoryItems()
+    .filter(filter)
+    .map(item => ({
+      itempos: item.pos,
+      itemid: item.itemid,
+      count: Math.max(item.count, 1),
+    })))
+
+  while (cga.getInventoryItems().filter(filter).length > 0) {
+    await cga.delay(1000)
+  }
+}
+
 const sellStones = async () => {
   if (getSellStoneItems().length === 0) {
     log('没有东西要卖')
@@ -68,6 +87,27 @@ const sellStones = async () => {
   await move.walkList([[155, 125, '法兰城']])
   const dlg = await npc.talkToNpc('平民防具贩售处')
   await sellNpcStone(dlg)
+}
+
+const sellItems = async (items: string[]) => {
+  const filter = (item: InventoryItem) => {
+    const itemDb = Items.find(i => i.name === item.name)
+    if (!itemDb) {
+      // 不在道具数据库中的物品不卖
+      return false
+    }
+    return items.includes(item.name) && item.count >= itemDb.maxStackCount
+  }
+  if (cga.getInventoryItems().filter(filter).length === 0) {
+    log(`没有${items}要卖`)
+    return
+  }
+
+  await move.falan.toStone('S')
+  await move.walkList([[155, 125, '法兰城']])
+  const dlg = await npc.talkToNpc('平民防具贩售处')
+  await sellNpcItems(dlg, filter)
+  log(`卖完${items}啦`)
 }
 
 const buyPotions = async (amount: number) => {
@@ -98,10 +138,16 @@ const buyPotions = async (amount: number) => {
   }
 }
 
+const isBagFull = () => {
+  return cga.getInventoryItems().length === 20
+}
+
 export {
   ItemWeakListSettings,
+  sellItems,
   sellStones,
   getPotionRecoveryAmount,
   buyPotions,
+  isBagFull,
 }
 

@@ -84,7 +84,14 @@ const talkToNpc = async (hydratedNpc: DehydratedNpc, strategy?: DialogStrategy[]
   }
 }
 
+const waitForNpc = async (name: string) => {
+  while (!cga.findNPC(name)) {
+    await cga.delay(1000)
+  }
+}
+
 export {
+  waitForNpc,
   faceToNPC,
   talkToNpc,
   waitNPCDialog,

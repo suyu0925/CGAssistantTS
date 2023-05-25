@@ -22,10 +22,12 @@ const walkTo = async (x: number, y: number, newMapName?: string) => {
   await promisify(cga.walkList)([[x, y, newMapName]])
 }
 
-const walkList = async (steps: [number, number, DehydratedMap][]) => {
+const walkList = async (steps: [number, number, DehydratedMap | undefined][]) => {
   await promisify(cga.walkList)(steps.map(step => [
     step[0], step[1],
-    hydrateMap(step[2]).name,
+    step[2] === undefined
+      ? undefined
+      : (hydrateMap(step[2])?.name ?? step[2] as string),
   ]))
 }
 

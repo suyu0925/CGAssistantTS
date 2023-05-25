@@ -7,26 +7,33 @@ import { loadSettings, log } from './utils'
 import { doRequest } from './request'
 import * as battle from './battle'
 import * as supply from './supply'
-import { getCurrentMap, isSameMap } from './database/map'
+import { Stations, getCurrentMap, isSameMap } from './database/map'
 import { buyPotions, getPotionRecoveryAmount, sellStones } from './item'
 import { prepare } from './farm'
 import * as move from './move'
+import * as team from './team'
 import * as farm from './farm'
+import * as gather from './gather'
 import { promisify } from 'util'
 import { shujing } from './farm/shujing'
 import { learnSkill } from './player/skill'
 import { learnSingleTargetElementSpells } from './request/profession/mage'
+import * as request from './request'
+import { LoggingYinduQingmu } from './gather/logging'
 
 bootstrap()
   .then(async () => {
     // await npc.talkToNpc('王宫召唤士盖兹', DefaultDialogStrategies.Confirm)
+    // await npc.talkToNpc('专管称号的阿蒙')
     // log(await npc.talkToNpc('操作说明', DefaultDialogStrategies.Next))
+
+    // await prepare()
+    // await move.falan.toStone('E')
+    // await team.buildTeam(null, Stations['东门'])
+
     // log(cga.getMapInfo())
     // log(await findPathToStation({ map: '召唤之间', x: 19, y: 6 }))
-    // log(cga.findNPC('药剂师波洛姆'))
     // await buyPotions(cga.GetPlayerInfo().maxhp)
-    // await npc.talkToNpc('专管称号的阿蒙')
-    // await npc.talkToNpc('测试者', DefaultDialogStrategies.Confirm)
     // await ringOfDeath()
     // log(cga.getInventoryItems())
     // await supply.hpmp()
@@ -40,8 +47,10 @@ bootstrap()
     // await shujing()
     // await move.falan.toCastle()
     // await doRequest('就职药剂师')
-    // log(cga.findNPC('狄尔西雅达美'))
+    // log(cga.findNPC('樵夫荷拉巴斯'))
+    // await request.profession.incomingWoodcutter()
+    await gather.honeSkill('伐木')
     // await learnSingleTargetElementSpells()
 
-    battle.encounter()
+    // battle.encounter()
   })

@@ -13,13 +13,19 @@ export const Maps: Map[] = [
   { name: '芙蕾雅', index: 100, },
   { name: '芙蕾雅', index: 100, unique_name: '芙蕾雅西边' },
   { name: '法兰城', index: 1000, },
+  { name: '职业介绍所', index: 1091, },
+  { name: '医院', index: 1111, unique_name: '西医' },
   { name: '医院', index: 1112, unique_name: '东医' },
+  { name: '艾文蛋糕店', index: 1151, },
+  { name: '山男的家', index: 1155, },
   { name: '魔女之家', index: 1160, },
   { name: '里谢里雅堡', index: 1500, },
   { name: '厨房', index: 1502, unique_name: '里谢里雅堡厨房' },
   { name: '里谢里雅堡 1楼', index: 1520, },
   { name: '召唤之间', index: 1530, },
   { name: '回廊', index: 1531, },
+  { name: '封印之间', index: 1538, },
+  { name: '城内的地下迷宫1楼', index: -1, },
   { name: '圣拉鲁卡村', index: 2300, },
   { name: '医院', index: 2310, unique_name: '圣村医院' },
   { name: '医院 2楼', index: 2311, unique_name: '圣村医院 2楼' },
@@ -31,6 +37,8 @@ export const Maps: Map[] = [
   { name: '试炼之洞窟 第4层', index: 11009 },
   { name: '试炼之洞窟 第5层', index: 11010 },
   { name: '试炼之洞窟 大厅', index: 11011 },
+  { name: '灵堂', index: 11015, },
+  { name: '灵堂', index: 11015, unique_name: '灵堂内侧' },
 ]
 
 export type Station = {
@@ -95,6 +103,11 @@ export const searchMapByIndex = (index: number): Map | null => {
 }
 
 export const hydrateMap = (dehydratedMap: DehydratedMap): Map | null => {
+  // 空字符串当作当前地图处理
+  if (typeof dehydratedMap === 'string' && dehydratedMap.trim() === '') {
+    return getCurrentMap()
+  }
+
   let map: Map | null = null
   if (isHybratedMap(dehydratedMap)) {
     map = { ...dehydratedMap as Map }
@@ -105,9 +118,17 @@ export const hydrateMap = (dehydratedMap: DehydratedMap): Map | null => {
   } else {
     map = searchMapByName(dehydratedMap.unique_name ?? dehydratedMap.name)
   }
-  if (!map && typeof dehydratedMap === 'string') {
-    map = getCurrentMap()
+
+  // 如果还是匹配不到，试试当前地图。
+  // 如果想补充数据库，可以关闭这个判断。
+  if (false && !map) {
+    const cur = getCurrentMap()
+    if ((typeof dehydratedMap === 'string' && dehydratedMap === cur.name)
+      || (typeof dehydratedMap === 'number' && dehydratedMap === cur.index)) {
+      map = cur
+    }
   }
+
   return map
 }
 

@@ -61,6 +61,9 @@ const firstOptionDialog = async (dlg: Dialog) => {
     case 0:
       cga.ClickNPCDialog(0, 0)
       return true
+    case 2:
+      cga.ClickNPCDialog(0, 0)
+      return true
     default:
       return await skipDialog(dlg)
   }
@@ -69,6 +72,22 @@ const firstOptionDialog = async (dlg: Dialog) => {
 const secondOptionDialog = async (dlg: Dialog) => {
   switch (dlg.options) {
     case 0:
+      cga.ClickNPCDialog(0, 1)
+      return true
+    case 2:
+      cga.ClickNPCDialog(0, 1)
+      return true
+    default:
+      return await skipDialog(dlg)
+  }
+}
+
+const thirdOptionDialog = async (dlg: Dialog) => {
+  switch (dlg.options) {
+    case 0:
+      cga.ClickNPCDialog(0, 1)
+      return true
+    case 2:
       cga.ClickNPCDialog(0, 1)
       return true
     default:
@@ -84,7 +103,8 @@ const DefaultDialogStrategies = {
   ConfirmOnce: { count: 1, func: confirmDialog },
   DenyOnce: { count: 1, func: denyDialog },
   FirstOnce: { count: 1, func: firstOptionDialog },
-  SecondOnce: { count: 1, func: secondOptionDialog }
+  SecondOnce: { count: 1, func: secondOptionDialog },
+  ThirdOnce: { count: 1, func: thirdOptionDialog },
 }
 
 export {

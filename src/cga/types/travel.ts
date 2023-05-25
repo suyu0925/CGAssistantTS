@@ -10,6 +10,7 @@ export interface ITravelApi {
     falan: {
       toStone: (stone: FalanPortal, cb: Function) => void
       toEastHospital: (cb: Function) => void
+      toWestHospital: (cb: Function) => void
       toCastle: (cb: Function) => void
     }
   }

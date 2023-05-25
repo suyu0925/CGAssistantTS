@@ -1,3 +1,5 @@
+import { Skill } from "../../player/skill"
+
 export type HealthStatus =
   | 0 // 正常
   | 100 // 黄伤？
@@ -111,11 +113,22 @@ export type PlayerUnitInfo = {
 }
 
 export type PlayerSkill = {
-  
+  name: Skill // 技能名称。如：'伐木体验'
+  lv: number // 当前等级。如：1
+  maxlv: number // 最大等级。如：1
+  xp: number // 当前经验值。如：0
+  maxxp: number // 最大经验值。如：1000
+  skill_id: number // 技能ID。如：251
+  type: number // 技能类型。有哪些类型呢？如：4
+  pos: number // 位置是什么？如：1
+  index: number // 在技能栏中的序号。如：0
+  slotsize: number // 占了技能栏几格位置。如：3
 }
 
 export interface IPlayerApi {
   GetPlayerInfo: () => PlayerInfo
   findPlayerUnit: (name: string) => PlayerUnitInfo
   findPlayerSkill: (name: string) => PlayerSkill
+
+  StartWork: (skillIndex: number, craftIndex: number) => void
 }

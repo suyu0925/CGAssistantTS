@@ -13,6 +13,13 @@ const toEastHospital = async () => {
   await promisify(cga.travel.falan.toEastHospital)()
 }
 
+const toWestHospital = async () => {
+  if (isSameMap(getCurrentMap(), '西医')) {
+    return
+  }
+  await promisify(cga.travel.falan.toWestHospital)()
+}
+
 const toCastle = async () => {
   if (isSameMap(getCurrentMap(), '里谢里雅堡')) {
     return
@@ -24,5 +31,6 @@ const toCastle = async () => {
 export default {
   toStone,
   toEastHospital,
+  toWestHospital,
   toCastle,
 }

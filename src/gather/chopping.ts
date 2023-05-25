@@ -1,6 +1,6 @@
 import { cga } from '../cga'
 import * as move from '../move'
-import { prepare, waitForBagFullSafely } from './utils'
+import { dropLowPriceItems, prepare, waitForBagFullSafely } from './utils'
 
 export enum ChopType {
   Wood = 1,
@@ -79,6 +79,7 @@ const chopVanilla = async (level: number) => {
     throw new Error('not implemented')
   }
 
+  await dropLowPriceItems()
   const skill = cga.findPlayerSkill('伐木')
   cga.StartWork(skill.index, 0)
 

@@ -29,6 +29,23 @@ export enum WorldStatus {
   Offline = 11,
 }
 
+export enum GameStatus {
+  Unkown = 1,
+  StuckInBattle = 2,
+  Idle = 3,
+  ChooseBattle = 4,
+  InBattle = 5,
+  BattleEnd = 8,
+  SwitchBattle = 11,
+  SwitchMap = 202,
+  SwtichMap2 = 205,
+}
+// * cga.GetGameStatus
+// *     202 | 205  切图
+// *     1 未知
+// *     2 卡住战斗 4 战斗选择 5 战斗中 8 战斗结束一瞬间的状态 11 战斗切图，不能用来判断战斗，因为战斗中会有小瞬间是3空闲状态
+// *     3 空闲
+
 export interface ISystemApi {
   REQUEST_TYPE_PK: Request
   REQUEST_TYPE_JOINTEAM: Request
@@ -44,4 +61,5 @@ export interface ISystemApi {
   DoRequest: (request: RequestType) => void
   EnableFlags: (flag: SystemFlag, open: boolean) => void
   GetWorldStatus: () => WorldStatus
+  GetGameStatus: () => GameStatus
 }

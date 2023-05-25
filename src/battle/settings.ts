@@ -33,11 +33,12 @@ const NormalAttack: Partial<GuiSetting> = {
 
 // 使用随机单体魔法
 const useRandomSingleTargetSpell = async () => {
-  const skill = ['冰冻魔法', '陨石魔法', '火焰魔法', '风刃魔法'][Math.floor(Math.random() * 4)] as Skill
-  if (!cga.findPlayerSkill(skill)) {
-    // no single target spell
+  const possessedSpells = ['冰冻魔法', '陨石魔法', '火焰魔法', '风刃魔法'].filter(skill => cga.findPlayerSkill(skill))
+  if (possessedSpells.length === 0) {
+    // 一个单体魔法也没学
     return
   }
+  const skill = possessedSpells[Math.floor(Math.random() * possessedSpells.length)] as Skill
   const settings: Partial<GuiSetting> = {
     battle: {
       list: [

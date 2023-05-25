@@ -1,6 +1,6 @@
 import { loadAutoBattleSettings } from '../battle/settings'
 import { loadGatheringItemWeakListSettings, loadGatheringSettings } from '../gather'
-import { ItemWeakListSettings } from '../item'
+import { ItemWeakListSettings, autoDropLowPriceItems } from '../item'
 import { AutoSupplyOnTheRoadSettings } from '../supply'
 import { loadSettings } from '../utils'
 import { ICgaApi } from './types'
@@ -21,6 +21,8 @@ const loadBaseSettings = async () => {
   await loadAutoBattleSettings()
   // 自动补给
   await loadSettings(AutoSupplyOnTheRoadSettings)
+  // 自动丢低价值的垃圾
+  await autoDropLowPriceItems()
   // 快速完成工作
   cga.SetImmediateDoneWork(true)
 }

@@ -1,6 +1,8 @@
 import { cga } from '../cga'
 import * as trade from './trade'
 import * as exchange from './exchange'
+import { getSettings, loadSettings } from '../utils'
+import { Items } from '../database/item'
 
 const ItemWeakListSettings = {
   itemtweaklist: [
@@ -35,10 +37,25 @@ const isBagFull = () => {
   return cga.getInventoryItems().length === 20
 }
 
+const autoDropLowPriceItems = async () => {
+  if (cga.GetPlayerInfo().gold > 1000) {
+    // 当身上钱超过1000时，就不要12块钱的石头了
+    const lowPriceStones = Items
+      .filter(item => item.name === '魔石' && item.sellPrice < 48)
+      .map(item => `#${item.id}`)
+    const { itemdroplist } = await getSettings()
+    await loadSettings({
+      itemdroplist:
+        Array.from(new Set(itemdroplist.concat(lowPriceStones)))
+    })
+  }
+}
+
 export {
   ItemWeakListSettings,
   isBagFull,
   trade,
   exchange,
+  autoDropLowPriceItems,
 }
 

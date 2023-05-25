@@ -1,9 +1,9 @@
 import { HealthStatus, cga } from '../cga'
+import { ItemType, Items } from '../database/item'
+import * as farm from '../farm'
 import * as item from '../item'
 import { cureByself } from '../supply/injury'
 import { getSettings, loadSettings, log } from '../utils'
-import * as farm from '../farm'
-import { ItemType, Items } from '../database/item'
 
 const waitForBagFullSafely = async (gathering: '伐木' | '挖矿' | '狩猎') => {
   while (true) {
@@ -12,10 +12,12 @@ const waitForBagFullSafely = async (gathering: '伐木' | '挖矿' | '狩猎') =
         log(`受伤治不好了，回城吧！`)
         break
       } else {
-        log(`治疗成功，继续伐木`)
+        log(`治疗成功，继续${gathering}`)
+        // TODO: 还是有时候不能恢复采集，加个延时吧
+        await cga.delay(1000)
         const skill = cga.findPlayerSkill(gathering)
         cga.StartWork(skill.index, 0)
-        log(`继续伐木中...`)
+        log(`继续${gathering}中...`)
       }
     }
 
@@ -49,10 +51,18 @@ const loadGatheringItemWeakListSettings = async () => {
   })
 }
 
+const dropLowPriceItems = async () => {
+  const items = cga
+    .getInventoryItems()
+    .filter(item => item.name === '卡片？') // 不要未鉴定的卡片
+  items.forEach(item => cga.DropItem(item.pos))
+}
+
 export {
   waitForBagFullSafely,
   prepare,
   loadGatheringSettings,
   loadGatheringItemWeakListSettings,
+  dropLowPriceItems,
 }
 

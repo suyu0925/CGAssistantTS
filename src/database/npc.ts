@@ -51,6 +51,7 @@ export const Npcs: Npc[] = [
   { name: '樵夫弗伦', station: { map: '法兰城', x: 106, y: 191 }, timeOfDay: 'day', id: 8026, model_id: 14108, }, // 就职樵夫任务。手斧换树苗。饼干换樵夫推荐信。
   { name: '种树的阿姆罗斯', station: { map: '法兰城', x: 134, y: 36 }, timeOfDay: 'day', id: 8027, model_id: 14025, }, // 就职樵夫任务。树苗换水色的花？。
   { name: '樵夫荷拉巴斯', station: { map: '职业介绍所', x: 7, y: 11 }, id: 9844, model_id: 14161, }, // 樵夫就职导师
+  { name: '平民防具贩售处', station: { map: '法兰城', x: 156, y: 122 }, id: 14561, model_id: 14183, },
 ]
 
 const findNearbyNpc = (name: string): Npc | null => {

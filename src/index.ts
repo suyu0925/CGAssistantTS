@@ -8,7 +8,7 @@ import { doRequest } from './request'
 import * as battle from './battle'
 import * as supply from './supply'
 import { Stations, getCurrentMap, isSameMap } from './database/map'
-import { buyPotions, getPotionRecoveryAmount, sellStones } from './item'
+import * as item from './item'
 import { prepare } from './farm'
 import * as move from './move'
 import * as team from './team'
@@ -21,25 +21,25 @@ import { learnSingleTargetElementSpells } from './request/profession/mage'
 import * as request from './request'
 import { chopWood, chopVanilla, ChopType } from './gather/chopping'
 import { cureByself } from './supply/injury'
+import { craftPosions } from './craft'
+import { getSellPosionItems } from './item/trade'
+import * as trade from './item/trade'
 
 bootstrap()
   .then(async () => {
-    // await npc.talkToNpc('王宫召唤士盖兹', DefaultDialogStrategies.Confirm)
-    // await npc.talkToNpc('专管称号的阿蒙')
-    // log(await npc.talkToNpc('操作说明', DefaultDialogStrategies.Next))
-
+    // 功能
     // await prepare()
     // await move.falan.toStone('E')
     // await team.buildTeam(null, Stations['东门'])
+    // battle.encounter()
 
     // log(cga.getMapInfo())
+    // log(cga.findNPC('平民防具贩售处'))
+
     // log(await findPathToStation({ map: '召唤之间', x: 19, y: 6 }))
     // await buyPotions(cga.GetPlayerInfo().maxhp)
-    // await ringOfDeath()
     // log(cga.getInventoryItems())
     // await supply.hpmp()
-    // log(getSellItemList())
-    // await prepare()
     // log(cga.getTeamPlayers())
     // await move.walkList([
     //   [509, 154, '芙蕾雅'],
@@ -47,14 +47,22 @@ bootstrap()
     // await farm.farm('树精')
     // await shujing()
     // await move.falan.toCastle()
+
     // await doRequest('就职药剂师')
-    // log(cga.findNPC('士兵亚瑟尔'))
+    // await doRequest('死者的戒指')
     // await request.profession.incomingWoodcutter()
-    await gather.honeSkill('伐木', ChopType.Vanilla)
     // await learnSingleTargetElementSpells()
 
+    // log(getSellPosionItems())
+    // log(getSellItemList())
     // await cureByself()
-    // await doRequest('死者的戒指')
 
-    // battle.encounter()
+    // 采集系
+    // await gather.honeSkill('伐木', ChopType.Vanilla)
+    // await gather.honeSkill('狩猎')
+    // await trade.sellItems(['苹果薄荷', '柠檬草'])
+    await chopVanilla(1)
+
+    // 制造系
+    // await craftPosions()
   })

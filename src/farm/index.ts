@@ -5,7 +5,7 @@ import * as move from '../move'
 import { profession } from '../player'
 import * as supply from '../supply'
 import * as team from '../team'
-import { loadSettings } from '../utils'
+import { getSettings, loadSettings } from '../utils'
 import { shujing } from './shujing'
 
 const ItemDropListSettings = {
@@ -15,24 +15,26 @@ const ItemDropListSettings = {
 }
 
 // 非战斗系不要留水晶碎片占格子
-const ItemDropListForNotBattleClassSettings = {
-  itemdroplist: [
-    '#18311', // 水的水晶碎片
-    '#18312', // 火的水晶碎片
-    '#18313', // 风的水晶碎片
-  ]
-}
+const ItemDropListForNotBattleClass = [
+  '#18311', // 水的水晶碎片
+  '#18312', // 火的水晶碎片
+  '#18313', // 风的水晶碎片
+]
 
 const loadingItemDropList = async () => {
   await loadSettings(ItemDropListSettings)
   if (!profession.isBattleClass()) {
-    await loadSettings(ItemDropListForNotBattleClassSettings)
+    const { itemdroplist } = await getSettings()
+    await loadSettings({
+      itemdroplist:
+        Array.from(new Set(itemdroplist.concat(ItemDropListForNotBattleClass)))
+    })
   }
 }
 
 const prepare = async () => {
-  await item.sellStones()
-  await item.buyPotions(cga.GetPlayerInfo().maxhp)
+  await item.trade.sellStones()
+  await item.trade.buyPotions(cga.GetPlayerInfo().maxhp)
   await supply.hpmp()
 
   await loadingItemDropList()

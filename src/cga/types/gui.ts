@@ -59,7 +59,7 @@ export type GuiSetting = {
 
 export interface IGuiApi {
   gui: {
-    GetSettings: () => GuiSetting
+    GetSettings: (cb: (err: Error, result: GuiSetting) => void) => void
     LoadSettings: (settings: Partial<GuiSetting>, cb: (err: Error, result: GuiSetting) => void) => void
   }
 }

@@ -8,3 +8,7 @@ export * from './time'
 export const loadSettings = async (settings: Partial<GuiSetting>) => {
   return await promisify(cga.gui.LoadSettings)(settings)
 }
+
+export const getSettings = async () => {
+  return await promisify(cga.gui.GetSettings)()
+}

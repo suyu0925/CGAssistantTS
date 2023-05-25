@@ -1,4 +1,5 @@
 import { loadAutoBattleSettings } from '../battle/settings'
+import { loadGatheringItemWeakListSettings, loadGatheringSettings } from '../gather'
 import { ItemWeakListSettings } from '../item'
 import { AutoSupplyOnTheRoadSettings } from '../supply'
 import { loadSettings } from '../utils'
@@ -13,10 +14,15 @@ const loadBaseSettings = async () => {
   await loadSettings({ player: { antiafkkick: true, } })
   // 物品堆叠
   await loadSettings(ItemWeakListSettings)
+  await loadGatheringItemWeakListSettings()
+  // 缩短采集所需时间
+  await loadGatheringSettings()
   // 自动战斗
   await loadAutoBattleSettings()
   // 自动补给
   await loadSettings(AutoSupplyOnTheRoadSettings)
+  // 快速完成工作
+  cga.SetImmediateDoneWork(true)
 }
 
 export const bootstrap = async (): Promise<ICgaApi> => {

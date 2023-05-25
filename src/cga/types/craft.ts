@@ -11,5 +11,6 @@ export type WorkingResult = {
 
 export interface ICraftApi {
   SetImmediateDoneWork: (isImmediate: boolean) => void
+  GetImmediateDoneWorkState: () => number
   AsyncWaitWorkingResult: (cb: (err: Error, result: WorkingResult) => void) => void
 }

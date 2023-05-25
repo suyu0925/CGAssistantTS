@@ -156,7 +156,9 @@ export interface IPlayerApi {
   findPlayerSkill: (name: string) => PlayerSkill
   GetSkillsInfo: () => PlayerSkill[]
 
-  StartWork: (skillIndex: number, craftIndex: number) => void
+  StartWork: (skillIndex: number, craftIndex: number) => boolean
+  CraftItem: (skillIndex: number, craftIndex: number, unkown: 0, itemPosArray: number[]) => boolean
+
   AsyncWaitPlayerMenu: (cb: (err: Error, players: PlayerMenu[]) => void) => void
   PlayerMenuSelect: (index: number) => void
   AsyncWaitUnitMenu: (cb: (err: Error, units: UnitMenu[]) => void) => void

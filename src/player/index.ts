@@ -11,7 +11,7 @@ const waitUnitMenu = async () => {
   return await promisify(cga.AsyncWaitUnitMenu)()
 }
 
-const awaitWorkingResult = async () => {
+const waitWorkingResult = async () => {
   return await promisify(cga.AsyncWaitWorkingResult)()
 }
 
@@ -20,6 +20,6 @@ export {
   skill,
   waitPlayerMenu,
   waitUnitMenu,
-  awaitWorkingResult,
+  waitWorkingResult,
 }
 

@@ -1,3 +1,5 @@
+// 0 头 1 衣服 2 左手 3 右手 4 鞋 5 左饰品 6 右饰品 7 水晶
+
 export type InventoryItem = {
   name: string // 物品名称。如：魔石
   info: string // 物品信息。如：$4魔族力量的来源

@@ -23,6 +23,12 @@ export enum SystemFlag {
   ENABLE_FLAG_BATTLE_POSITION = 101,
 }
 
+export enum WorldStatus {
+  Idle = 9,
+  Battle = 10,
+  Offline = 11,
+}
+
 export interface ISystemApi {
   REQUEST_TYPE_PK: Request
   REQUEST_TYPE_JOINTEAM: Request
@@ -37,4 +43,5 @@ export interface ISystemApi {
 
   DoRequest: (request: RequestType) => void
   EnableFlags: (flag: SystemFlag, open: boolean) => void
+  GetWorldStatus: () => WorldStatus
 }

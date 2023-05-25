@@ -1,5 +1,5 @@
 import { HealthStatus, cga } from '../cga'
-import { awaitWorkingResult, waitPlayerMenu, waitUnitMenu } from '../player'
+import { waitWorkingResult, waitPlayerMenu, waitUnitMenu } from '../player'
 import { log } from '../utils'
 
 export const cureByself = async (): Promise<boolean> => {
@@ -20,7 +20,7 @@ export const cureByself = async (): Promise<boolean> => {
         log(`魔不足，无法自己治疗`)
         return false
       }
-      // 点开治疗技能
+      // 点开治疗技能，选最高级的治疗
       cga.StartWork(cureSkill.index, cureSkill.lv - 1)
       // 选择玩家
       const players = await waitPlayerMenu()
@@ -31,8 +31,8 @@ export const cureByself = async (): Promise<boolean> => {
       // 自己总是第一个
       cga.UnitMenuSelect(0)
       // 等待治疗完成
-      const result = await awaitWorkingResult()
-      if (result.success) {
+      const result = await waitWorkingResult()
+      if (result.success && cga.GetPlayerInfo().health === HealthStatus.Normal) {
         return true
       }
     }

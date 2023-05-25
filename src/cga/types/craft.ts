@@ -10,7 +10,7 @@ export type WorkingResult = {
 }
 
 export interface ICraftApi {
-  SetImmediateDoneWork: (isImmediate: boolean) => void
+  SetImmediateDoneWork: (isImmediate: boolean) => void // 设定制造技能为瞬发
   GetImmediateDoneWorkState: () => number
-  AsyncWaitWorkingResult: (cb: (err: Error, result: WorkingResult) => void) => void
+  AsyncWaitWorkingResult: (cb: (err: Error, result: WorkingResult) => void, timeoutMs: number) => void
 }

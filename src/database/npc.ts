@@ -22,7 +22,7 @@ export const Npcs: Npc[] = [
   { name: '药剂师波洛姆', station: { map: '东医', x: 16, y: 35 }, id: 7534, model_id: 14089, },
   { name: '料理长米其巴', station: { map: '里谢里雅堡厨房', x: 8, y: 6 }, id: 7669, model_id: 14065, },
   { name: '看护实习生德拉格', station: { map: '圣村医院', x: 8, y: 4 }, id: 7679, model_id: 14117, }, // 用莫洛草换药剂师就职推荐信。药剂师就职任务。
-  { name: '山男哈葛利特', station: { map: '山男的家', x: 9, y: 3 }, id: 7681, model_id: 14124, }, // 用高级番茄换莫洛草。药剂师就职任务。
+  { name: '山男哈葛利特', station: { map: '山男的家', x: 9, y: 3 }, id: 7681, model_id: 14124, }, // 用高级蕃茄换莫洛草。药剂师就职任务。
   { name: '蛋糕店的艾文', station: { map: '艾文蛋糕店', x: 12, y: 5 }, id: 7690, model_id: 14023, }, // 樵夫就职任务。孟宗竹换手斧。木材？换饼干。
   { name: '王宫召唤士盖兹', station: { map: '召唤之间', x: 19, y: 6 }, id: 7747, valid: 2, type: 1, model_id: 14071, level: 1, flags: 4096, },
   { name: '操作说明', station: { map: '回廊', x: 47, y: 9 }, id: 7856, model_id: 14071, },

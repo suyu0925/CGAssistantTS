@@ -1,7 +1,6 @@
-import { prepare } from './utils'
 import { cga } from '../cga'
 import * as move from '../move'
-import { waitForBagFullSafely } from './utils'
+import { prepare, waitForBagFullSafely } from './utils'
 
 export enum ChopType {
   Wood = 1,
@@ -15,6 +14,7 @@ const ChoppingProducts = [
 
   { name: '苹果薄荷', type: ChopType.Vanilla, station: { name: '芙蕾雅西边', x: 500, y: 85 }, level: 1 },
   { name: '柠檬草', type: ChopType.Vanilla, station: { name: '芙蕾雅西边', x: 515, y: 100 }, level: 2 },
+  { name: '蝴蝶花', type: ChopType.Vanilla, station: { name: '芙蕾雅西边', x: 503, y: 118 }, level: 3 },
 ]
 
 const chopZhuzi = async () => {
@@ -51,38 +51,36 @@ const chopWood = async (level: number) => {
   await waitForBagFullSafely('伐木')
 }
 
-const chopApplemint = async () => {
-  // 去苹果薄荷砍满包
-  await move.falan.toStone('W')
-  await move.walkList([
-    [22, 88, '芙蕾雅西边'],
-    [500, 85, undefined],
-  ])
-  const skill = cga.findPlayerSkill('伐木')
-  cga.StartWork(skill.index, 0)
-}
-
-const chopLemonGrass = async () => {
-  // 去柠檬草点砍满包
-  await move.falan.toStone('W')
-  await move.walkList([
-    [22, 88, '芙蕾雅西边'],
-    [515, 100, undefined],
-  ])
-  const skill = cga.findPlayerSkill('伐木')
-  cga.StartWork(skill.index, 0)
-}
-
 const chopVanilla = async (level: number) => {
   await prepare()
 
   if (level === 1) {
-    await chopApplemint()
+    // 去苹果薄荷砍满包
+    await move.falan.toStone('W')
+    await move.walkList([
+      [22, 88, '芙蕾雅西边'],
+      [500, 85, undefined],
+    ])
   } else if (level === 2) {
-    await chopLemonGrass()
+    // 去柠檬草点砍满包
+    await move.falan.toStone('W')
+    await move.walkList([
+      [22, 88, '芙蕾雅西边'],
+      [515, 100, undefined],
+    ])
+  } else if (level === 3) {
+    // 去蝴蝶点砍满包
+    await move.falan.toStone('W')
+    await move.walkList([
+      [22, 88, '芙蕾雅西边'],
+      [503, 118, undefined],
+    ])
   } else {
     throw new Error('not implemented')
   }
+
+  const skill = cga.findPlayerSkill('伐木')
+  cga.StartWork(skill.index, 0)
 
   await waitForBagFullSafely('伐木')
 }

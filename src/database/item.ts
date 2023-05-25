@@ -22,7 +22,7 @@ export type Item = {
 
 const Items: Item[] = [
   { name: '印度轻木', id: 10000, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.Wood, },
-  { name: '番茄', id: 12006, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.FoodMeterial, },
+  { name: '蕃茄', id: 12006, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.FoodMeterial, },
   { name: '鸡蛋', id: 12404, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.FoodMeterial, },
   { name: '苹果薄荷', id: 12800, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.Vanilla, },
   { name: '柠檬草', id: 12801, maxStackCount: 40, sellStackCount: 20, sellPrice: 36, type: ItemType.Vanilla, },
@@ -33,6 +33,7 @@ const Items: Item[] = [
   { name: '面包', id: 15201, maxStackCount: 3, sellPrice: -1, type: ItemType.Food, },
   { name: '生命力回复药（75）', id: 15605, maxStackCount: 3, sellPrice: -1, type: ItemType.Posion, },
   { name: '生命力回复药（100）', id: 15606, maxStackCount: 3, sellPrice: 150, type: ItemType.Posion, },
+  { name: '生命力回复药（150）', id: 15607, maxStackCount: 3, sellPrice: 225, type: ItemType.Posion, },
   { name: '魔石', id: 18005, maxStackCount: 0, sellPrice: -1, type: ItemType.Item, description: '绿色的魔石' },
   { name: '魔石', id: 18026, maxStackCount: 0, sellPrice: -1, type: ItemType.Item, description: '蓝色的魔石' },
   { name: '魔石', id: 18047, maxStackCount: 0, sellPrice: 12, type: ItemType.Item, description: '红色的12块钱魔石' },

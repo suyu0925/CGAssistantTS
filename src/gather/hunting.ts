@@ -5,14 +5,14 @@ import * as move from '../move'
 import { waitForBagFullSafely } from './utils'
 
 const HuntingProducts = [
-  { name: '番茄', type: ItemType.FoodMeterial, station: { name: '芙蕾雅', x: 551, y: 163 }, level: 1 },
+  { name: '蕃茄', type: ItemType.FoodMeterial, station: { name: '芙蕾雅', x: 551, y: 163 }, level: 1 },
   { name: '鸡蛋', type: ItemType.FoodMeterial, station: { name: '芙蕾雅', x: 551, y: 163 }, level: 1 },
 ]
 
 const hunting = async (name: string) => {
   await prepare()
 
-  if (name === '番茄') {
+  if (name === '蕃茄') {
     await move.falan.toStone('E')
     await move.walkList([
       [281, 88, '芙蕾雅'],

@@ -24,9 +24,14 @@ export type BuyItem = {
 }
 
 export interface IItemApi {
+  // 背包里的物品
   getInventoryItems: () => InventoryItem[]
+  // 所有物品，包括身上的装备
+  GetItemsInfo: () => InventoryItem[]
+
   SellNPCStore: (sellItems: SellItem[]) => void
   BuyNPCStore: (buyItems: BuyItem[]) => void
+
   DropItem: (itemPos: number) => void
   UseItem: (itemPos: number) => void
 }

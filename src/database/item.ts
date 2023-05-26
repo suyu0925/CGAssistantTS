@@ -5,6 +5,7 @@ export enum ItemType {
   Item = 26, // 物品
   Wood = 30, // 木头类
   FoodMeterial = 34, // 食材
+  FoodMeterial2 = 35, // 食材2？小麦粉
   Vanilla = 36, // 香草类
   Card = 41, // 图鉴卡片。如果assessed为false，名字会是`卡片？`。
   Posion = 43, // 血瓶
@@ -23,9 +24,12 @@ export type Item = {
 const Items: Item[] = [
   { name: '印度轻木', id: 10000, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.Wood, },
   { name: '蕃茄', id: 12006, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.FoodMeterial, },
-  { name: '鸡蛋', id: 12404, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.FoodMeterial, },
+  { name: '小麦粉', id: 12400, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.FoodMeterial2, },
+  { name: '牛奶', id: 12401, maxStackCount: 40, sellStackCount: 20, sellPrice: 36, type: ItemType.FoodMeterial2, },
+  { name: '鸡蛋', id: 12404, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.FoodMeterial2, },
   { name: '苹果薄荷', id: 12800, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.Vanilla, },
   { name: '柠檬草', id: 12801, maxStackCount: 40, sellStackCount: 20, sellPrice: 36, type: ItemType.Vanilla, },
+  { name: '蝴蝶花', id: 12802, maxStackCount: 40, sellStackCount: 20, sellPrice: 41, type: ItemType.Vanilla, },
   { name: '小石像怪的卡片', id: 14836, maxStackCount: 0, sellPrice: -1, type: ItemType.Card, },
   { name: '卡片？', id: 14848, maxStackCount: 0, sellPrice: -1, type: ItemType.Card, description: '未鉴定的卡片，不知道是哪个的' },
   { name: '树精的卡片', id: 14875, maxStackCount: 0, sellPrice: -1, type: ItemType.Card, },

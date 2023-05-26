@@ -34,8 +34,8 @@ export type PlayerInfo = {
   battle_position: 0,
   punchclock: 0,
   usingpunchclock: false,
-  petriding: false,
-  name: '=一片帆=',
+  petriding: false
+  name: string // 角色名。如：'=一片帆='
   job: '见习弓箭手',
   nick: '',
   titles: [

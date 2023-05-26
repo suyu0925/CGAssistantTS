@@ -30,10 +30,12 @@ export const Npcs: Npc[] = [
   { name: '测试者', station: { map: '灵堂', x: 54, y: 2 }, id: 7988, model_id: 17092, },
   { name: '国王', station: { map: '偈见之间', x: 7, y: 3 }, id: 8057, model_id: 14052, },
   { name: '士兵亚瑟尔', station: { map: '里谢里雅堡 2楼', x: 47, y: 79 }, id: 8061, model_id: 14062, },
+  { name: '传送石管理人', station: { map: '伊尔村的传送点', x: 21, y: 10 }, id: 8083, model_id: 14072, }, // 所有的传送石管理人都叫这名字，要靠id区分
   { name: '士兵伊岱鲁', station: { map: '灵堂', x: 9, y: 8 }, timeOfDay: ['dawn', 'twilight'], id: 8311, model_id: 14058, }, // 灵堂看门人。黄昏和黎明时出现
   { name: '士兵托葛利', station: { map: '灵堂', x: 11, y: 4 }, id: 8313, model_id: 14059, }, // 负责放人从灵堂内侧出来
   { name: '神木', station: { map: '芙蕾雅西边', x: 298, y: 148, range: [300, 156] }, timeOfDay: 'night', id: 8250, model_id: 10085, }, // 魔术
   { name: '资深护士菲儿', station: { map: '东医', x: 6, y: 33 }, id: 8917, model_id: 14152, },
+  { name: '矿工潘丹', station: { map: '芙蕾雅', x: 472, y: 316 }, id: 8652, model_id: 14163, }, // 战斗系20级进熊洞
   { name: '护士尤美儿', station: { map: '东医', x: 8, y: 30 }, id: 8897, model_id: 14090, },
   { name: '护士米露卡', station: { map: '回廊', x: 26, y: 22 }, id: 9158, model_id: 14089, supply: true, },
   { name: '专管称号的阿蒙', station: { map: '法兰城', x: 230, y: 83 }, id: 9168, model_id: 14100, },

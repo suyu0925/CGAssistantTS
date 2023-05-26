@@ -39,20 +39,20 @@ export type GuiSetting = {
   itemidmap: {},
   itemtweaklist: string[] // 堆叠的道具。格式为`${item}|${number}`。如：['火的水晶碎片|999', '水的水晶碎片|999', '风的水晶碎片|999', '地的水晶碎片|999'],
   player: Partial<{
-    antiafkkick: boolean, // 是否打开：说话防掉线
-    autosupply: boolean, // 是否打开：自动补给
-    gametextui: false, // 是否打开：显示游戏内文本
-    movespd: number, // 移动速度，100为100%，超过105会被踢
+    antiafkkick: boolean // 是否打开：说话防掉线
+    autosupply: boolean // 是否打开：自动补给
+    gametextui: false // 是否打开：显示游戏内文本
+    movespd: number // 移动速度，100为100%，超过105会被踢
     noswitchanim: false,
-    petfood: boolean, // 是否打开：宠吃料理
-    petfoodat: '0',
-    petmed: boolean, // 是否打开：宠吃药水
+    petfood: boolean // 是否打开：宠吃料理
+    petfoodat: '0'
+    petmed: boolean // 是否打开：宠吃药水
     petmedat: string // 保持血线到多少，可为具体血量或百分比。如：'100', '30%'
-    usefood: boolean, // 是否打开：人吃料理
+    usefood: boolean // 是否打开：人吃料理
     usefoodat: '0',
-    usemed: boolean, // 是否打开：人吃药水
-    usemedat: string, // 人血瓶血量，可以是绝对值也可以是百分比，比如'150'和'50%'
-    workacc: 100,
+    usemed: boolean // 是否打开：人吃药水
+    usemedat: string // 人血瓶血量，可以是绝对值也可以是百分比，比如'150'和'50%'
+    workacc: number // 人物移动速度。100为100%，超过105会被踢。建议103-104
     workdelay: number // 采集时间，6500为默认值
   }>
 }

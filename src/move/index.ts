@@ -5,6 +5,7 @@ import { DehydratedMap, Station, getCurrentMap, hydrateMap, isStationInMap } fro
 import { DehydratedNpc, hydrateNpc } from '../database/npc'
 import falan from './falan'
 import { getMovablePositionsAround, turnOrientation } from './utils'
+import register from './register'
 
 const waitForMapChanged = async (newMapName: string, timeout: number = 3000) => {
   while (timeout > 0) {
@@ -87,6 +88,7 @@ const isMoving = () => {
 
 export {
   falan,
+  register,
   isMoving,
   walkTo,
   walkList,

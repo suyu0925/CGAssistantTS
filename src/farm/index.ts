@@ -1,12 +1,13 @@
+import { encounter } from '../battle'
 import { cga } from '../cga'
 import { Stations } from '../database/map'
 import * as item from '../item'
 import * as move from '../move'
+import * as npc from '../npc'
 import { profession } from '../player'
 import * as supply from '../supply'
 import * as team from '../team'
-import { getSettings, loadSettings } from '../utils'
-import { shujing } from './shujing'
+import { getSettings, loadSettings, log } from '../utils'
 
 const CommonItemDropList = [
   '#18194', // 人见人嫌的红头盔
@@ -41,15 +42,43 @@ const prepare = async () => {
   await loadingItemDropList()
 }
 
+const shujing = async () => {
+  await move.falan.toStone('E')
+  await team.buildTeam(null, Stations['东门'])
+  if (team.isTeamLeader()) {
+    await move.walkList([
+      [281, 87, '芙蕾雅'],
+      [566, 233, '芙蕾雅'],
+    ])
+
+    encounter()
+  }
+}
+
+const xiongdong = async () => {
+  if (cga.GetPlayerInfo().level < 20) {
+    log(`熊洞练级最低等级是20级，当前${cga.GetPlayerInfo().level}级，等级不足`)
+    return
+  }
+
+  await move.falan.toStone('S')
+  await move.walkList([
+    [153, 241, '芙蕾雅'],
+  ])
+  await npc.talkToNpc('矿工潘丹', npc.DefaultDialogStrategies.Confirm)
+  await team.buildTeam(null, { map: '维诺亚洞穴 地下1楼', x: 19, y: 14 })
+  if (team.isTeamLeader()) {
+    encounter()
+  }
+}
+
 const farm = async (name: string) => {
   await prepare()
 
   if (name === '树精') {
-    await move.falan.toStone('E')
-    await team.buildTeam(null, Stations['东门'])
-    if (team.isTeamLeader()) {
-      await shujing()
-    }
+    await shujing()
+  } else if (name === '熊洞') {
+    await xiongdong()
   } else {
     throw new Error(`找不到练级地点：${name}`)
   }

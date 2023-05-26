@@ -15,7 +15,6 @@ import * as team from './team'
 import * as farm from './farm'
 import * as gather from './gather'
 import { promisify } from 'util'
-import { shujing } from './farm/shujing'
 import { learnSkill } from './player/skill'
 import { learnSingleTargetElementSpells } from './request/profession/mage'
 import * as request from './request'
@@ -32,9 +31,10 @@ bootstrap()
     // await move.falan.toStone('E')
     // await team.buildTeam(null, Stations['东门'])
     // battle.encounter()
+    // log(cga.GetPlayerInfo())
 
     // log(cga.getMapInfo())
-    // log(cga.findNPC('平民防具贩售处'))
+    // log(cga.findNPC('传送石管理人'))
 
     // log(await findPathToStation({ map: '召唤之间', x: 19, y: 6 }))
     // await buyPotions(cga.GetPlayerInfo().maxhp)
@@ -45,6 +45,8 @@ bootstrap()
     //   [509, 154, '芙蕾雅'],
     // ])
     // await farm.farm('树精')
+    // await move.register('伊尔')
+    await farm.farm('熊洞')
     // await shujing()
     // await move.falan.toCastle()
 
@@ -58,12 +60,12 @@ bootstrap()
     // await cureByself()
 
     // 采集系
-    await gather.honeSkill('伐木', ChopType.Vanilla)
-    // await trade.sellItems(['蕃茄', '鸡蛋'])
+    // await gather.honeSkill('伐木', ChopType.Vanilla)
+    // await trade.sellItems(['蕃茄', '鸡蛋', '牛奶', '小麦粉'])
     // await gather.honeSkill('狩猎')
-    // await trade.sellItems(['苹果薄荷', '柠檬草'])
-    // await chopVanilla(2)
+    // await trade.sellItems(['苹果薄荷', '柠檬草', '蝴蝶花'])
+    // await chopVanilla(1)
 
     // 制造系
-    // await craftPosions(2)
+    // await craftPosions(3)
   })

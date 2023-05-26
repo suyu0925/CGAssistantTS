@@ -12,12 +12,14 @@ export let cga: ICgaApi
 const loadBaseSettings = async () => {
   // 开启说话防掉线
   await loadSettings({ player: { antiafkkick: true, } })
+  // 移动速度104%
+  await loadSettings({ player: { workacc: 104, } })
   // 物品堆叠
   await loadSettings(ItemWeakListSettings)
   await loadGatheringItemWeakListSettings()
   // 缩短采集所需时间
-  await loadGatheringSettings()
   // 自动战斗
+  await loadGatheringSettings()
   await loadAutoBattleSettings()
   // 自动补给
   await loadSettings(AutoSupplyOnTheRoadSettings)

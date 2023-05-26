@@ -28,9 +28,13 @@ export const Maps: Map[] = [
   { name: '回廊', index: 1531, },
   { name: '封印之间', index: 1538, },
   { name: '城内的地下迷宫1楼', index: -1, },
+  { name: '伊尔村', index: 2000, },
+  { name: '村长的家', index: 2012, unique_name: '伊尔村长的家' },
+  { name: '伊尔村的传送点', index: 2099, },
   { name: '圣拉鲁卡村', index: 2300, },
   { name: '医院', index: 2310, unique_name: '圣村医院' },
   { name: '医院 2楼', index: 2311, unique_name: '圣村医院 2楼' },
+  { name: '维诺亚洞穴 地下1楼', index: 11000 },
   { name: '国营第24坑道 地下1楼', index: 11013 },
   { name: '国营第24坑道 地下1楼', index: 11013, unique_name: '国营第24坑道 地下1楼西边' },
   { name: '试炼之洞窟 第1层', index: 11006 },
@@ -52,6 +56,7 @@ export type Station = {
 
 export const Stations = {
   '东门': { map: '法兰城', x: 240, y: 87 },
+  '南门': { map: '法兰城', x: 153, y: 149 },
 }
 
 export const getCurrentMap = (): Map => {

@@ -22,7 +22,12 @@ const waitForBagFullSafely = async (gathering: '伐木' | '挖矿' | '狩猎') =
       }
     }
 
-    if (item.isBagFull() || cga.GetPlayerInfo().mp <= 10) {
+    if (item.isBagFull()) {
+      log(`包满了，回城吧！`)
+      break
+    }
+
+    if (cga.GetPlayerInfo().mp <= 5) {
       log(`没魔了，回城吧！`)
       break
     }

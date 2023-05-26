@@ -50,8 +50,6 @@ const shujing = async () => {
       [281, 87, '芙蕾雅'],
       [566, 233, '芙蕾雅'],
     ])
-
-    encounter()
   }
 }
 
@@ -67,20 +65,33 @@ const xiongdong = async () => {
   ])
   await npc.talkToNpc('矿工潘丹', npc.DefaultDialogStrategies.Confirm)
   await team.buildTeam(null, { map: '维诺亚洞穴 地下1楼', x: 19, y: 14 })
-  if (team.isTeamLeader()) {
-    encounter()
-  }
 }
 
 const farm = async (name: string) => {
-  await prepare()
+  while (true) {
+    await prepare()
 
-  if (name === '树精') {
-    await shujing()
-  } else if (name === '熊洞') {
-    await xiongdong()
-  } else {
-    throw new Error(`找不到练级地点：${name}`)
+    log(`出发去${name}练级`)
+    if (name === '树精') {
+      await shujing()
+    } else if (name === '熊洞') {
+      await xiongdong()
+    } else {
+      throw new Error(`找不到练级地点：${name}`)
+    }
+
+    if (team.isTeamLeader()) {
+      await encounter()
+    } else {
+      await team.waitForDisbanding()
+    }
+
+    if (team.isSomeoneInjured()) {
+      log(`有人受伤啦，停止练级`)
+      break
+    }
+
+    log(`回补，再来一次`)
   }
 }
 

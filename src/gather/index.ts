@@ -22,6 +22,7 @@ const honeSkill = async (skill: string, subtype?: any) => {
         throw new Error(`请指定伐木的ChopType`)
       }
     } else if (skill === '狩猎') {
+      await trade.sellItems(['蕃茄', '鸡蛋', '牛奶', '小麦粉'])
       await hunting('鸡蛋')
     }
 

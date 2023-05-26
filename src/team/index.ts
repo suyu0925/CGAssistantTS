@@ -1,8 +1,17 @@
 import { RequestType, SystemFlag, cga } from '../cga'
 import { Station } from '../database/map'
 import * as move from '../move'
-import * as player from '../player'
 import { log } from '../utils'
+
+const isSomeoneInDanger = () => {
+  const teamPlayers = cga.getTeamPlayers()
+  return teamPlayers.some(p => p.hp < p.maxhp * 0.1)
+}
+
+const isSomeoneInjured = () => {
+  const teamPlayers = cga.getTeamPlayers()
+  return teamPlayers.some(p => p.injury !== 0)
+}
 
 const isInTeam = () => {
   return cga.getTeamPlayers().length > 0
@@ -103,6 +112,8 @@ const buildTeam = async (teamLeader: string | null, station: Station) => {
 }
 
 export {
+  isSomeoneInDanger,
+  isSomeoneInjured,
   isInTeam,
   joinTeam,
   disbandTeam,

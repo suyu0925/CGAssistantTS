@@ -29,6 +29,9 @@ const hunting = async (name: string) => {
   }
 
   await dropLowPriceItems()
+
+  // 停3秒再开始采集，避免因自动吃血瓶打断采集
+  await cga.delay(3000)
   const skill = cga.findPlayerSkill('狩猎')
   cga.StartWork(skill.index, 0)
 

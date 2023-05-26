@@ -9,11 +9,13 @@ import { getSettings, loadSettings } from '../utils'
 import { shujing } from './shujing'
 
 const CommonItemDropList = [
+  '#18194', // 人见人嫌的红头盔
   '#18195', // 人见人嫌的绿头盔
 ]
 
 // 非战斗系不要留水晶碎片占格子
 const ItemDropListForNotBattleClass = [
+  '#18310', // 地的水晶碎片
   '#18311', // 水的水晶碎片
   '#18312', // 火的水晶碎片
   '#18313', // 风的水晶碎片

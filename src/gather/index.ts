@@ -5,7 +5,8 @@ import { ChopType, chopVanilla, chopWood } from './chopping'
 import { hunting } from './hunting'
 
 const honeSkill = async (skill: string, subtype?: any) => {
-  if (!cga.findPlayerSkill(skill)) {
+  const honedSkill = cga.findPlayerSkill(skill)
+  if (!honedSkill) {
     throw new Error(`没有技能：${skill}`)
   }
 
@@ -13,10 +14,10 @@ const honeSkill = async (skill: string, subtype?: any) => {
     if (skill === '伐木') {
       if (subtype === ChopType.Wood) {
         await trade.sellItems(['印度轻木'])
-        await chopWood(1)
+        await chopWood(honedSkill.lv - 1)
       } else if (subtype === ChopType.Vanilla) {
-        await trade.sellItems(['苹果薄荷', '柠檬草'])
-        await chopVanilla(2)
+        await trade.sellItems(['苹果薄荷', '柠檬草', '蝴蝶花'])
+        await chopVanilla(honedSkill.lv - 1)
       } else {
         throw new Error(`请指定伐木的ChopType`)
       }

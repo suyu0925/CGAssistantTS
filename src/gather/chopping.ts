@@ -80,6 +80,9 @@ const chopVanilla = async (level: number) => {
   }
 
   await dropLowPriceItems()
+
+  // 停3秒再开始采集，避免因自动吃血瓶打断采集
+  await cga.delay(3000)
   const skill = cga.findPlayerSkill('伐木')
   cga.StartWork(skill.index, 0)
 

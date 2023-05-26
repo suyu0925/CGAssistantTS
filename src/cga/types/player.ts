@@ -4,6 +4,7 @@ export enum HealthStatus {
   Normal = 0,
   White = 8,
   Yellow = 100,
+  Pupple = 54,
 }
 
 export enum MenuColor {
@@ -121,8 +122,8 @@ export type PlayerUnitInfo = {
 
 export type PlayerSkill = {
   name: Skill // 技能名称。如：'伐木体验'
-  lv: number // 当前等级。如：1
-  maxlv: number // 最大等级。如：1
+  lv: number // 当前等级。从1开始。如：1
+  maxlv: number // 最大等级。从1开始。如：1
   xp: number // 当前经验值。如：0
   maxxp: number // 最大经验值。如：1000
   skill_id: number // 技能ID。如：251

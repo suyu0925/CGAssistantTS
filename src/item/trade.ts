@@ -43,7 +43,7 @@ const buyPotions = async (amount: number) => {
 
 const getSellStoneItems = () => {
   return cga.getInventoryItems()
-    .filter(item => item.name === '魔石')
+    .filter(item => item.name === '魔石' || item.name === '锥形水晶')
     .map(item => ({
       itempos: item.pos,
       itemid: item.itemid,

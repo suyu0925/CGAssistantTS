@@ -9,6 +9,12 @@ type Skill =
   | '治疗' | '急救'
   | '制药'
   | '伐木' | '伐木体验'
+  | '挖掘' | '挖掘体验'
+
+export type GatheringSKill =
+  | '伐木' | '伐木体验'
+  | '挖掘' | '挖掘体验'
+  | '狩猎' | '狩猎体验'
 
 const Teachers: { skill: Skill, npc: string }[] = [
   { skill: '陨石魔法', npc: '魔术师比尔艾特' },
@@ -20,6 +26,8 @@ const Teachers: { skill: Skill, npc: string }[] = [
   { skill: '治疗', npc: '伯舒医师' },
   { skill: '制药', npc: '见习药剂师吉可' },
   { skill: '伐木体验', npc: '募集樵夫的阿空' },
+  { skill: '挖掘体验', npc: '募集矿工的洛伊' },
+  { skill: '挖掘', npc: '传说的矿工基尔' },
 ]
 
 const learnSkill = async (skill: Skill) => {

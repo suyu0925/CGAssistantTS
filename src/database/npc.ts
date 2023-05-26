@@ -27,13 +27,24 @@ export const Npcs: Npc[] = [
   { name: '王宫召唤士盖兹', station: { map: '召唤之间', x: 19, y: 6 }, id: 7747, valid: 2, type: 1, model_id: 14071, level: 1, flags: 4096, },
   { name: '操作说明', station: { map: '回廊', x: 47, y: 9 }, id: 7856, model_id: 14071, },
   { name: '战斗说明', station: { map: '回廊', x: 23, y: 25 }, id: 7857, model_id: 14058, },
+  { name: '凯蒂夫人', station: { map: '凯蒂夫人的店', x: 17, y: 12 }, id: 7860, model_id: 14018, },  // 鉴定NPC 
   { name: '测试者', station: { map: '灵堂', x: 54, y: 2 }, id: 7988, model_id: 17092, },
+  { name: '鉴定师马尔弗', station: { map: '凯蒂夫人的店', x: 13, y: 9 }, id: 8018, model_id: 14014, },  // 矿工就职的任务链NPC
+  { name: '矿工毕夫鲁', station: { map: '国营第24坑道 地下1楼', x: 35, y: 7 }, id: 8019, model_id: 14163, },  // 就职矿工的任务链NPC
+  { name: '那尔薇', station: { map: '毕夫鲁的家', x: 8, y: 3 }, id: 8031, model_id: 14022, },  // 就职矿工的任务链NPC
+  { name: '矿工吉拉瓦特', station: { map: '圣村村长的家 2楼', x: 8, y: 4 }, id: 9848, model_id: 14162, },  // 矿工的就职导师
+  { name: '传说的矿工基尔', station: { map: '基尔的家', x: 9, y: 2 }, id: 9746, model_id: 14027, },  // 学习`挖掘`技能
+  { name: '传送石管理人', station: { map: '圣拉鲁卡村的传送点', x: 15, y: 3 }, id: 8051, model_id: 14073, },
+  { name: '募集矿工的洛伊', station: { map: '维诺亚村的传送点', x: 16, y: 10 }, id: 9749, model_id: 14017, },  // 学习`挖掘体验`
   { name: '国王', station: { map: '偈见之间', x: 7, y: 3 }, id: 8057, model_id: 14052, },
   { name: '士兵亚瑟尔', station: { map: '里谢里雅堡 2楼', x: 47, y: 79 }, id: 8061, model_id: 14062, },
   { name: '传送石管理人', station: { map: '伊尔村的传送点', x: 21, y: 10 }, id: 8083, model_id: 14072, }, // 所有的传送石管理人都叫这名字，要靠id区分
   { name: '士兵伊岱鲁', station: { map: '灵堂', x: 9, y: 8 }, timeOfDay: ['dawn', 'twilight'], id: 8311, model_id: 14058, }, // 灵堂看门人。黄昏和黎明时出现
   { name: '士兵托葛利', station: { map: '灵堂', x: 11, y: 4 }, id: 8313, model_id: 14059, }, // 负责放人从灵堂内侧出来
   { name: '神木', station: { map: '芙蕾雅西边', x: 298, y: 148, range: [300, 156] }, timeOfDay: 'night', id: 8250, model_id: 10085, }, // 魔术
+  { name: '佣兵艾里克', station: { map: '维村医院', x: 7, y: 5 }, id: 8640, model_id: 14156, },
+  { name: '传送石管理人', station: { map: '维诺亚村的传送点', x: 5, y: 4 }, id: 8645, model_id: 14073, },
+  { name: '战士巴其鲁', station: { map: '索奇亚海底洞窟 地下1楼 索村侧', x: 8, y: 37 }, id: 8698, model_id: 14109, }, // 拿热砂戒指可以过海的NPC
   { name: '资深护士菲儿', station: { map: '东医', x: 6, y: 33 }, id: 8917, model_id: 14152, },
   { name: '矿工潘丹', station: { map: '芙蕾雅', x: 472, y: 316 }, id: 8652, model_id: 14163, }, // 战斗系20级进熊洞
   { name: '护士尤美儿', station: { map: '东医', x: 8, y: 30 }, id: 8897, model_id: 14090, },
@@ -52,6 +63,8 @@ export const Npcs: Npc[] = [
   { name: '募集樵夫的阿空', station: { map: '职业介绍所', x: 8, y: 11 }, id: 9416, model_id: 14075, }, // 学习伐木体验
   { name: '樵夫弗伦', station: { map: '法兰城', x: 106, y: 191 }, timeOfDay: 'day', id: 8026, model_id: 14108, }, // 就职樵夫任务。手斧换树苗。饼干换樵夫推荐信。
   { name: '种树的阿姆罗斯', station: { map: '法兰城', x: 134, y: 36 }, timeOfDay: 'day', id: 8027, model_id: 14025, }, // 就职樵夫任务。树苗换水色的花？。
+  { name: '护士贝耶', station: { map: '维村医院', x: 13, y: 5 }, id: 9229, model_id: 14089, },
+  { name: '资深护士蕾丹', station: { map: '维村医院', x: 15, y: 7 }, id: 9244, model_id: 14152, },
   { name: '樵夫荷拉巴斯', station: { map: '职业介绍所', x: 7, y: 11 }, id: 9844, model_id: 14161, }, // 樵夫就职导师
   { name: '平民防具贩售处', station: { map: '法兰城', x: 156, y: 122 }, id: 14561, model_id: 14183, },
 ]

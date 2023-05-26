@@ -1,5 +1,5 @@
 import { promisify } from 'util'
-import { WorkingResult, cga } from '../cga'
+import { ColorType, WorkingResult, cga } from '../cga'
 import * as profession from './profession'
 import * as skill from './skill'
 
@@ -23,9 +23,14 @@ const waitWorkingResult = async (timeoutMs: number = 1000): Promise<WorkingResul
   })
 }
 
+const sayWords = (words: string, color: ColorType = 0, range: number = 1, size: number = 1) => {
+  cga.SayWords(words, color, range, size)
+}
+
 export {
   profession,
   skill,
+  sayWords,
   waitPlayerMenu,
   waitUnitMenu,
   waitWorkingResult,

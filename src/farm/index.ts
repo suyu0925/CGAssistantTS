@@ -67,6 +67,29 @@ const xiongdong = async () => {
   await team.buildTeam(null, { map: '维诺亚洞穴 地下1楼', x: 19, y: 14 })
 }
 
+const haidi = async () => {
+  if (cga.GetPlayerInfo().level < 20) {
+    log(`熊洞练级最低等级是20级，当前${cga.GetPlayerInfo().level}级，等级不足`)
+    return
+  }
+
+  await move.falan.toStone('S')
+  await move.walkList([
+    [153, 241, '芙蕾雅'],
+  ])
+  await npc.talkToNpc('矿工潘丹', npc.DefaultDialogStrategies.Confirm)
+  await team.buildTeam(null, { map: '维诺亚洞穴 地下1楼', x: 19, y: 14 })
+
+  if (team.isTeamLeader()) {
+    await move.walkList([
+      [20, 59, '维诺亚洞穴 地下2楼'],
+      [24, 81, '维诺亚洞穴 地下3楼'],
+      [26, 64, '芙蕾雅南边'],
+      [343, 497, '索奇亚海底洞窟 地下1楼'],
+    ])
+  }
+}
+
 const farm = async (name: string) => {
   while (true) {
     await prepare()
@@ -76,6 +99,8 @@ const farm = async (name: string) => {
       await shujing()
     } else if (name === '熊洞') {
       await xiongdong()
+    } else if (name === '海底') {
+      await haidi()
     } else {
       throw new Error(`找不到练级地点：${name}`)
     }

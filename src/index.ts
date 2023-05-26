@@ -23,6 +23,7 @@ import { cureByself } from './supply/injury'
 import { craftPosions } from './craft'
 import { getSellPosionItems } from './item/trade'
 import * as trade from './item/trade'
+import { incomingMiner } from './request/profession'
 
 bootstrap()
   .then(async () => {
@@ -34,7 +35,8 @@ bootstrap()
     // log(cga.GetPlayerInfo())
 
     // log(cga.getMapInfo())
-    // log(cga.findNPC('传送石管理人'))
+    // log(cga.findNPC('传说的矿工基尔'))
+    // await incomingMiner()
 
     // log(await findPathToStation({ map: '召唤之间', x: 19, y: 6 }))
     // await buyPotions(cga.GetPlayerInfo().maxhp)
@@ -45,8 +47,9 @@ bootstrap()
     //   [509, 154, '芙蕾雅'],
     // ])
     // await farm.farm('树精')
-    // await move.register('伊尔')
-    await farm.farm('熊洞')
+    // await battle.encounter()
+    // await move.register('维村')
+    await farm.farm('海底')
     // await shujing()
     // await move.falan.toCastle()
 
@@ -62,7 +65,7 @@ bootstrap()
     // 采集系
     // await gather.honeSkill('伐木', ChopType.Vanilla)
     // await trade.sellItems(['蕃茄', '鸡蛋', '牛奶', '小麦粉'])
-    // await gather.honeSkill('狩猎')
+    // await gather.honeSkill('挖掘')
     // await trade.sellItems(['苹果薄荷', '柠檬草', '蝴蝶花'])
     // await chopVanilla(1)
 

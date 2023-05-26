@@ -1,15 +1,11 @@
 import { Skill } from "../../player/skill"
+import { ColorType } from "./system"
 
 export enum HealthStatus {
   Normal = 0,
   White = 8,
   Yellow = 100,
   Pupple = 54,
-}
-
-export enum MenuColor {
-  Green = 0,
-  White = 4,
 }
 
 export type PlayerInfo = {
@@ -139,7 +135,7 @@ export type PlayerMenu = {
   index: number
 }
 
-export type UnitMenu =  {
+export type UnitMenu = {
   name: string // 单位的名称。如：'=四条柴=', '小蝙蝠'
   level: number // 单位的等级。如：9
   health: number // 单位的健康状况。如：HealthStatus.White
@@ -147,7 +143,7 @@ export type UnitMenu =  {
   maxhp: number
   mp: number
   maxmp: number
-  color: MenuColor // 菜单颜色。比如自己是MenuColor.Green。
+  color: ColorType // 菜单颜色。比如自己是MenuColor.Green。
   index: number
 }
 

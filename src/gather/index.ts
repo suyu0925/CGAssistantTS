@@ -1,10 +1,12 @@
 import { HealthStatus, cga } from '../cga'
 import { trade } from '../item'
+import { GatheringSKill } from '../player/skill'
 import { log } from '../utils'
 import { ChopType, chopVanilla, chopWood } from './chopping'
 import { hunting } from './hunting'
+import { mining } from './mining'
 
-const honeSkill = async (skill: string, subtype?: any) => {
+const honeSkill = async (skill: GatheringSKill, subtype?: any) => {
   const honedSkill = cga.findPlayerSkill(skill)
   if (!honedSkill) {
     throw new Error(`没有技能：${skill}`)
@@ -24,6 +26,9 @@ const honeSkill = async (skill: string, subtype?: any) => {
     } else if (skill === '狩猎') {
       await trade.sellItems(['蕃茄', '鸡蛋', '牛奶', '小麦粉'])
       await hunting('鸡蛋')
+    } else if (skill === '挖掘') {
+      await trade.sellItems(['铜', '碎石头'])
+      await mining('铜')
     }
 
     if (cga.GetPlayerInfo().health > HealthStatus.Yellow) {
@@ -33,8 +38,9 @@ const honeSkill = async (skill: string, subtype?: any) => {
   }
 }
 
-export * from './hunting'
 export * from './chopping'
+export * from './hunting'
+export * from './mining'
 export * from './utils'
 export {
   honeSkill,

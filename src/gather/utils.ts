@@ -6,7 +6,7 @@ import { supplyHpMp } from '../supply/hpmp'
 import { cureByself } from '../supply/injury'
 import { getSettings, loadSettings, log } from '../utils'
 
-const waitForBagFullSafely = async (gathering: '伐木' | '挖矿' | '狩猎') => {
+const waitForBagFullSafely = async (gathering: '伐木' | '挖掘' | '狩猎') => {
   while (true) {
     if (cga.GetPlayerInfo().health !== HealthStatus.Normal) {
       if (!await cureByself()) {

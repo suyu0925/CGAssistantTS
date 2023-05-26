@@ -3,6 +3,7 @@ export enum ItemType {
   Request = 18, // 任务物品。如：死者的戒指。可能是指登出会消失的物品？
   Food = 23, // 料理
   Item = 26, // 物品
+  Mine = 29, // 矿石类
   Wood = 30, // 木头类
   FoodMeterial = 34, // 食材
   FoodMeterial2 = 35, // 食材2？小麦粉
@@ -22,6 +23,8 @@ export type Item = {
 }
 
 const Items: Item[] = [
+  { name: '铜', id: 9600, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.Mine, },
+  { name: '碎石头', id: 18209, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.Mine, },
   { name: '印度轻木', id: 10000, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.Wood, },
   { name: '蕃茄', id: 12006, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.FoodMeterial, },
   { name: '小麦粉', id: 12400, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.FoodMeterial2, },
@@ -47,6 +50,7 @@ const Items: Item[] = [
   { name: '魔石', id: 18068, maxStackCount: 0, sellPrice: 12, type: ItemType.Item, description: '黄色的12块钱魔石' },
   { name: '魔术师推荐信', id: 18107, maxStackCount: 0, sellPrice: 0, type: ItemType.Item, },
   { name: '药剂师推荐信', id: 18132, maxStackCount: 0, sellPrice: 0, type: ItemType.Item, },
+  { name: '矿工推荐信', id: 18133, maxStackCount: 0, sellPrice: 0, type: ItemType.Item, },
   { name: '樵夫推荐信', id: 18141, maxStackCount: 0, sellPrice: 0, type: ItemType.Item, },
   { name: '红头盔', id: 18194, maxStackCount: 0, sellPrice: 0, type: ItemType.Helm, },
   { name: '绿头盔', id: 18195, maxStackCount: 0, sellPrice: 0, type: ItemType.Helm, },

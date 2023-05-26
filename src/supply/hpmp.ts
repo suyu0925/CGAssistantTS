@@ -8,6 +8,9 @@ const needPlayerSupply = () => {
   const playerInfo = cga.GetPlayerInfo()
   const lackOfHp = playerInfo.maxhp - playerInfo.hp
   const lackOfMp = playerInfo.maxmp - playerInfo.mp
+  if (lackOfMp && playerInfo.gold < lackOfMp) {
+    log(`缺${lackOfMp}点魔，但钱不够补`)
+  }
   return (lackOfHp && (playerInfo.level < 10 || playerInfo.gold >= lackOfHp))
     || (lackOfMp && playerInfo.gold >= lackOfMp)
 }

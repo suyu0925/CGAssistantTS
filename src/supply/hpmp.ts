@@ -4,10 +4,17 @@ import * as npc from '../npc'
 import { profession } from '../player'
 import { loadSettings, log } from '../utils'
 
-const needSupply = (ignoreStandbyPets?: boolean) => {
+const needPlayerSupply = () => {
   const playerInfo = cga.GetPlayerInfo()
-  const playerNeedSupply = playerInfo.hp < playerInfo.maxhp || playerInfo.mp < playerInfo.maxmp
-  const petIds = ignoreStandbyPets ? [playerInfo.petid] : [0, 1, 2, 3, 4]
+  const lackOfHp = playerInfo.maxhp - playerInfo.hp
+  const lackOfMp = playerInfo.maxmp - playerInfo.mp
+  return (lackOfHp && (playerInfo.level < 10 || playerInfo.gold >= lackOfHp))
+    || (lackOfMp && playerInfo.gold >= lackOfMp)
+}
+
+const needPetSupply = (onlyCurrentPet?: boolean) => {
+  const playerInfo = cga.GetPlayerInfo()
+  const petIds = onlyCurrentPet ? [playerInfo.petid] : [0, 1, 2, 3, 4]
   const petNeedSupply = petIds.some(petId => {
     if (petId === -1) {
       return false
@@ -15,7 +22,11 @@ const needSupply = (ignoreStandbyPets?: boolean) => {
     const pet = cga.GetPetInfo(petId)
     return pet.hp < pet.maxhp || pet.mp < pet.maxmp
   })
-  return playerNeedSupply || petNeedSupply
+  return petNeedSupply
+}
+
+const needSupply = (onlyCurrentPet?: boolean) => {
+  return needPlayerSupply() || needPetSupply(onlyCurrentPet)
 }
 
 const supplyHpMp = async () => {

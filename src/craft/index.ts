@@ -8,7 +8,7 @@ import { log } from '../utils'
 const PosionCrafts = [
   { craftIndex: 0, name: '生命力回复药（100）', meterials: [{ name: '苹果薄荷', count: 10 }, { name: '柠檬草', count: 1 }], mana: 20 },
   { craftIndex: 1, name: '生命力回复药（150）', meterials: [{ name: '苹果薄荷', count: 10 }, { name: '柠檬草', count: 10 }], mana: 40 },
-  { craftIndex: 1, name: '生命力回复药（200）', meterials: [{ name: '蝴蝶花', count: 5 }, { name: '柠檬草', count: 10 }, { name: '苹果薄荷', count: 10 },], mana: 60 },
+  { craftIndex: 2, name: '生命力回复药（200）', meterials: [{ name: '蝴蝶花', count: 5 }, { name: '柠檬草', count: 10 }, { name: '苹果薄荷', count: 10 },], mana: 60 },
 ]
 
 const craftPosions = async (level?: number) => {

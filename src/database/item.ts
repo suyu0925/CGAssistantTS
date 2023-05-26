@@ -34,6 +34,7 @@ const Items: Item[] = [
   { name: '生命力回复药（75）', id: 15605, maxStackCount: 3, sellPrice: -1, type: ItemType.Posion, },
   { name: '生命力回复药（100）', id: 15606, maxStackCount: 3, sellPrice: 150, type: ItemType.Posion, },
   { name: '生命力回复药（150）', id: 15607, maxStackCount: 3, sellPrice: 225, type: ItemType.Posion, },
+  { name: '生命力回复药（200）', id: 15608, maxStackCount: 3, sellPrice: 300, type: ItemType.Posion, },  
   { name: '魔石', id: 18005, maxStackCount: 0, sellPrice: 12, type: ItemType.Item, description: '绿色的12块钱魔石' },
   { name: '魔石', id: 18026, maxStackCount: 0, sellPrice: 12, type: ItemType.Item, description: '蓝色的12块钱魔石' },
   { name: '魔石', id: 18027, maxStackCount: 0, sellPrice: 12, type: ItemType.Item, description: '蓝色的12块钱魔石' },

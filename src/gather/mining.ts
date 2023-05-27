@@ -59,8 +59,23 @@ const mining = async (name: MiningProduct) => {
   await waitForBagFullSafely('挖掘')
 }
 
+const recursiveMining = async (name: MiningProduct) => {
+  while (true) {
+    await zip('铜')
+    await mining('铜')
+    await zip('铜')
+
+    await cga.delay(1000) // 这里需要加延时，压完条后需要一点时间才会改变getInventoryItems
+    if (cga.getInventoryItems().length > 15) {
+      log('背包满了，在做好银行接口前先到此为止')
+      break
+    }
+  }
+}
+
 export {
   mining,
   zip,
+  recursiveMining,
 }
 

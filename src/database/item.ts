@@ -20,6 +20,7 @@ export type Item = {
   sellPrice: number // 卖出价格，不能卖为0。-1代表不知道价格需要收集。
   type: ItemType // 物品类型
   description?: string
+  level?: number
 }
 
 const Items: Item[] = [
@@ -33,16 +34,19 @@ const Items: Item[] = [
   { name: '苹果薄荷', id: 12800, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.Vanilla, },
   { name: '柠檬草', id: 12801, maxStackCount: 40, sellStackCount: 20, sellPrice: 36, type: ItemType.Vanilla, },
   { name: '蝴蝶花', id: 12802, maxStackCount: 40, sellStackCount: 20, sellPrice: 41, type: ItemType.Vanilla, },
-  { name: '小石像怪的卡片', id: 14836, maxStackCount: 0, sellPrice: -1, type: ItemType.Card, },
+  { name: '小石像怪的卡片', id: 14836, maxStackCount: 0, sellPrice: 40, type: ItemType.Card, }, // 卡片的卖价是（等级+1）**2 * 10
   { name: '卡片？', id: 14848, maxStackCount: 0, sellPrice: -1, type: ItemType.Card, description: '未鉴定的卡片，不知道是哪个的' },
-  { name: '树精的卡片', id: 14875, maxStackCount: 0, sellPrice: 90, type: ItemType.Card, },
+  { name: '树精的卡片', id: 14875, maxStackCount: 0, sellPrice: 90, type: ItemType.Card, level: 2, },
+  { name: '恶魔螃蟹的卡片', id: 14925, maxStackCount: 0, sellPrice: 90, type: ItemType.Card, level: 2, },
+  { name: '蜥蜴战士的卡片', id: 14929, maxStackCount: 0, sellPrice: 160, type: ItemType.Card, level: 3, },
+  { name: '水龙晰的卡片', id: 14939, maxStackCount: 0, sellPrice: 250, type: ItemType.Card, level: 4, },
   { name: '盗贼的卡片', id: 14952, maxStackCount: 0, sellPrice: -1, type: ItemType.Card, },
   { name: '面包', id: 15201, maxStackCount: 3, sellPrice: -1, type: ItemType.Food, },
   { name: '生命力回复药（75）', id: 15605, maxStackCount: 3, sellPrice: -1, type: ItemType.Posion, },
   { name: '生命力回复药（100）', id: 15606, maxStackCount: 3, sellPrice: 150, type: ItemType.Posion, },
   { name: '生命力回复药（150）', id: 15607, maxStackCount: 3, sellPrice: 225, type: ItemType.Posion, },
-  { name: '生命力回复药（200）', id: 15608, maxStackCount: 3, sellPrice: 300, type: ItemType.Posion, },  
-  { name: '锥形水晶', id: 17200, maxStackCount: 0, sellPrice: 200, type: ItemType.Item, },  
+  { name: '生命力回复药（200）', id: 15608, maxStackCount: 3, sellPrice: 300, type: ItemType.Posion, },
+  { name: '锥形水晶', id: 17200, maxStackCount: 0, sellPrice: 200, type: ItemType.Item, },
   { name: '魔石', id: 18005, maxStackCount: 0, sellPrice: 12, type: ItemType.Item, description: '绿色的12块钱魔石' },
   { name: '魔石', id: 18026, maxStackCount: 0, sellPrice: 12, type: ItemType.Item, description: '蓝色的12块钱魔石' },
   { name: '魔石', id: 18027, maxStackCount: 0, sellPrice: 12, type: ItemType.Item, description: '蓝色的12块钱魔石' },

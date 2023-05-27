@@ -24,7 +24,7 @@ import { craftPosions } from './craft'
 import { getSellPosionItems } from './item/trade'
 import * as trade from './item/trade'
 import { incomingMiner } from './request/profession'
-import { zip } from './gather'
+import { recursiveMining, zip } from './gather'
 
 bootstrap()
   .then(async () => {
@@ -48,10 +48,10 @@ bootstrap()
     // await move.walkList([
     //   [509, 154, '芙蕾雅'],
     // ])
-    // await farm.farm('树精')
+    await farm.farm('树精', '=一瓶药=')
     // await battle.encounter()
     // await move.register('维村')
-    await farm.farm('海底')
+    // await farm.farm('海底')
     // await shujing()
     // await move.falan.toCastle()
 
@@ -67,9 +67,11 @@ bootstrap()
     // 采集系
     // await gather.honeSkill('伐木', ChopType.Vanilla)
     // await gather.honeSkill('挖掘')
+    // await recursiveMining('铜')
     // await gather.honeSkill('狩猎')
     // await trade.sellItems(['苹果薄荷', '柠檬草', '蝴蝶花'])
     // await chopVanilla(1)
+    // await chopWood(2)
 
     // 制造系
     // await craftPosions(3)

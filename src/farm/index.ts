@@ -43,9 +43,9 @@ const prepare = async () => {
   await loadingItemDropList()
 }
 
-const shujing = async () => {
+const shujing = async (teamLeader?: string) => {
   await move.falan.toStone('E')
-  await team.buildTeam(null, Stations['东门'])
+  await team.buildTeam(teamLeader, Stations['东门'])
   if (team.isTeamLeader()) {
     await move.walkList([
       [281, 87, '芙蕾雅'],
@@ -54,7 +54,7 @@ const shujing = async () => {
   }
 }
 
-const xiongdong = async () => {
+const xiongdong = async (teamLeader?: string) => {
   if (cga.GetPlayerInfo().level < 20) {
     log(`熊洞练级最低等级是20级，当前${cga.GetPlayerInfo().level}级，等级不足`)
     return
@@ -65,10 +65,10 @@ const xiongdong = async () => {
     [153, 241, '芙蕾雅'],
   ])
   await npc.talkToNpc('矿工潘丹', npc.DefaultDialogStrategies.Confirm)
-  await team.buildTeam(null, { map: '维诺亚洞穴 地下1楼', x: 19, y: 14 })
+  await team.buildTeam(teamLeader, { map: '维诺亚洞穴 地下1楼', x: 19, y: 14 })
 }
 
-const haidi = async () => {
+const haidi = async (teamLeader?: string) => {
   if (cga.GetPlayerInfo().level < 20) {
     log(`熊洞练级最低等级是20级，当前${cga.GetPlayerInfo().level}级，等级不足`)
     return
@@ -79,7 +79,7 @@ const haidi = async () => {
     [153, 241, '芙蕾雅'],
   ])
   await npc.talkToNpc('矿工潘丹', npc.DefaultDialogStrategies.Confirm)
-  await team.buildTeam(null, { map: '维诺亚洞穴 地下1楼', x: 19, y: 14 })
+  await team.buildTeam(teamLeader, { map: '维诺亚洞穴 地下1楼', x: 19, y: 14 })
 
   if (team.isTeamLeader()) {
     await move.walkList([
@@ -91,17 +91,17 @@ const haidi = async () => {
   }
 }
 
-const farm = async (name: string) => {
+const farm = async (name: string, teamLeader?: string) => {
   while (true) {
     await prepare()
 
     log(`出发去${name}练级`)
     if (name === '树精') {
-      await shujing()
+      await shujing(teamLeader)
     } else if (name === '熊洞') {
-      await xiongdong()
+      await xiongdong(teamLeader)
     } else if (name === '海底') {
-      await haidi()
+      await haidi(teamLeader)
     } else {
       throw new Error(`找不到练级地点：${name}`)
     }

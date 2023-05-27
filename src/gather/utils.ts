@@ -2,6 +2,7 @@ import { HealthStatus, cga } from '../cga'
 import { ItemType, Items } from '../database/item'
 import * as farm from '../farm'
 import * as item from '../item'
+import { getPlayerProfession } from '../player/profession'
 import { supplyHpMp } from '../supply/hpmp'
 import { cureByself } from '../supply/injury'
 import { getSettings, loadSettings, log } from '../utils'
@@ -37,6 +38,11 @@ const waitForBagFullSafely = async (gathering: '伐木' | '挖掘' | '狩猎') =
 }
 
 const prepare = async () => {
+  if (getPlayerProfession().category !== '采集系') {
+    log('当前职业不是采集系，无法使用采集功能')
+    return
+  }
+
   await farm.prepare()
   // 补完魔如果受轻伤自己治一下，治完再次补魔
   await cureByself()

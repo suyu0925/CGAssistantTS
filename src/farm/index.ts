@@ -68,7 +68,6 @@ const lintang = async (teamLeader?: string) => {
     [9, 8, undefined],
   ])
   await npc.waitForNpc('士兵伊岱鲁')
-  log(`士兵伊岱鲁出现了`)
   await npc.talkToNpc('士兵伊岱鲁', npc.DefaultDialogStrategies.Confirm)
   await move.waitForMapChanged('封印之间')
   await team.buildTeam(teamLeader, { map: '封印之间', x: 15, y: 3 })

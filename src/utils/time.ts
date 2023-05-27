@@ -13,6 +13,7 @@ export const getTimeOfDay = (): TimeOfDay => {
   // 太阳和月亮正中间是几点？
   // 3线：
   //    在02:23分还能进，还算黎明。02:24分不能进了。
+  //    在03:13分又出现了，算是黄昏。
   const minutes = new Date().getMinutes()
   throw new Error('not implemented')
 }

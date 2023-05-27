@@ -34,7 +34,7 @@ export const Maps: Map[] = [
   { name: '召唤之间', index: 1530, }, // 为什么还会有1537？难道召唤之间的index也是动态的吗？
   { name: '回廊', index: 1531, },
   { name: '封印之间', index: 1538, },
-  { name: '城内的地下迷宫1楼', index: -1, },
+  { name: '城内的地下迷宫地下1楼', index: 1639, }, // 随机迷宫，index会变
   { name: '伊尔村', index: 2000, },
   { name: '村长的家', index: 2012, unique_name: '伊尔村长的家' },
   { name: '伊尔村的传送点', index: 2099, },

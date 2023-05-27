@@ -19,7 +19,7 @@ export const Links: Link[] = [
   { from: '灵堂', to: '灵堂地下牢房', walk: [7, 52], },
   { from: '灵堂地下牢房', to: '灵堂', walk: [27, 43], },
   { from: '灵堂内侧', to: '灵堂', talk: ['士兵托葛利', DefaultDialogStrategies.Confirm], },
-  { from: '封印之间', to: '城内的地下迷宫1楼', walk: [15, 18], },
+  { from: '封印之间', to: '城内的地下迷宫地下1楼', walk: [15, 18], },
   { from: '封印之间', to: '灵堂内侧', walk: [15, 2], },
   { from: '芙蕾雅', to: { map: '法兰城', x: 227, y: 88 }, walk: [470, 196], },
   { from: '芙蕾雅', to: { map: '法兰城', x: 153, y: 235 }, walk: [424, 253], },

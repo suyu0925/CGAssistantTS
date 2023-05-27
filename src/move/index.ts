@@ -89,6 +89,18 @@ const isMoving = () => {
   return !(speed && speed.x === 0 && speed.y === 0)
 }
 
+const walkRandomMaze = async (targetMap: string = null) => {
+  return new Promise<void>((resolve, reject) => {
+    cga.walkRandomMaze(targetMap, (err) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve()
+      }
+    })
+  })
+}
+
 export {
   falan,
   register,
@@ -101,5 +113,6 @@ export {
   getCurrentMap,
   turnOrientation as turnDir,
   waitForMapChanged,
+  walkRandomMaze,
 }
 

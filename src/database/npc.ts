@@ -78,7 +78,7 @@ export const Npcs: Npc[] = [
   { name: '交换金', station: { map: '米克尔工房', x: 24, y: 5 }, id: 9475, model_id: 14004, },
   { name: '交换白金', station: { map: '米克尔工房', x: 30, y: 7 }, id: 9478, model_id: 14512, },
   { name: '交换幻之钢', station: { map: '米克尔工房', x: 27, y: 10 }, id: 9479, model_id: 14012, },
-  { name: '交换幻之银', station: { map: '米克尔工房', x: 28, y: 8 }, id: 9480, model_id: 14014, },,
+  { name: '交换幻之银', station: { map: '米克尔工房', x: 28, y: 8 }, id: 9480, model_id: 14014, },
   { name: '造弓工飞利欧司', station: { map: '圣村装备品店 地下工房', x: 24, y: 15 }, id: 9699, model_id: 14536, }, // 学习造弓技能
   { name: '造杖工泛吉翁', station: { map: '圣村装备品店 地下工房', x: 37, y: 20 }, id: 9701, model_id: 14538, }, // 学习造杖技能
   { name: '造弓师傅梅葛拉', station: { map: '圣村装备品店 地下工房', x: 25, y: 18 }, id: 9800, model_id: 14537, }, // 造弓师就职导师

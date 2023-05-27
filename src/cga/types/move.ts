@@ -42,4 +42,15 @@ export interface IMoveApi {
   isDistanceClose: (x1: number, y1: number, x2: number, y2: number) => boolean
   // 获取坐标之间的直线距离
   getDistance: (x1: number, y1: number, x2: number, y2: number) => number
+
+  // 走随机迷宫
+  walkRandomMaze: (targetMap: string, cb: (err: Error) => void, filter?: { layerNameFilter: any, entryTileFilter: any }) => void
+  /*走一层迷宫
+    target_map :  走到目标地图就停止，填null则自动解析地图名中的楼层，填''则允许任何形式的地图作为目标楼层。
+    filter (可选) : {
+      layerNameFilter : 自定义解析地图名的方法
+      entryTileFilter : 自定义解析楼梯的方法
+    }
+  */
+  walkMaze: (targetMap: string, cb: (err: Error) => void, filter?: { layerNameFilter: any, entryTileFilter: any }) => void
 }

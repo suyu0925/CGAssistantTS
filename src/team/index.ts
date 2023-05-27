@@ -2,6 +2,13 @@ import { RequestType, SystemFlag, cga } from '../cga'
 import { Station } from '../database/map'
 import * as move from '../move'
 import { log } from '../utils'
+import * as _ from 'lodash'
+
+// 是否非战斗系全部缺魔
+const isLackOfMana = () => {
+  const teamPlayers = cga.getTeamPlayers()
+  return teamPlayers.filter(p => p.maxmp > 400).every(p => p.mp < 40)
+}
 
 const isSomeoneInDanger = () => {
   const teamPlayers = cga.getTeamPlayers()
@@ -112,6 +119,7 @@ const buildTeam = async (teamLeader: string | null, station: Station) => {
 }
 
 export {
+  isLackOfMana,
   isSomeoneInDanger,
   isSomeoneInjured,
   isInTeam,

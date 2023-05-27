@@ -54,6 +54,42 @@ const shujing = async (teamLeader?: string) => {
   }
 }
 
+const lintang = async (teamLeader?: string) => {
+  if (cga.GetPlayerInfo().level < 10) {
+    log(`灵堂练级最低等级是10级，当前${cga.GetPlayerInfo().level}级，等级不足`)
+    return
+  }
+
+  await move.falan.toCastle()
+  await move.walkList([
+    [47, 85, '召唤之间'],
+    [27, 8, '回廊'],
+    [23, 19, '灵堂'],
+    [9, 8, undefined],
+  ])
+  await npc.waitForNpc('士兵伊岱鲁')
+  log(`士兵伊岱鲁出现了`)
+  await npc.talkToNpc('士兵伊岱鲁', npc.DefaultDialogStrategies.Confirm)
+  await move.waitForMapChanged('封印之间')
+  await team.buildTeam(teamLeader, { map: '封印之间', x: 15, y: 3 })
+
+  if (team.isTeamLeader()) {
+    await move.walkList([
+      [15, 18, '城内的地下迷宫地下1楼'],
+    ])
+    try {
+      while (true) {
+        await move.walkRandomMaze()
+        if (cga.GetMapName() === '城内的地下迷宫地下9楼') {
+          break
+        }
+      }
+    } catch (err) {
+      log(`走随机迷宫出错: ${err}`)
+    }
+  }
+}
+
 const xiongdong = async (teamLeader?: string) => {
   if (cga.GetPlayerInfo().level < 20) {
     log(`熊洞练级最低等级是20级，当前${cga.GetPlayerInfo().level}级，等级不足`)
@@ -98,6 +134,8 @@ const farm = async (name: string, teamLeader?: string) => {
     log(`出发去${name}练级`)
     if (name === '树精') {
       await shujing(teamLeader)
+    } else if (name === '灵堂') {
+      await lintang(teamLeader)
     } else if (name === '熊洞') {
       await xiongdong(teamLeader)
     } else if (name === '海底') {

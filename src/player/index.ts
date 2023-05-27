@@ -11,6 +11,17 @@ const waitUnitMenu = async () => {
   return await promisify(cga.AsyncWaitUnitMenu)()
 }
 
+const waitForPositionChange = async (x: number, y: number) => {
+  while (true) {
+    const pos = cga.GetMapXY()
+    if (!(pos.x === x && pos.y === y)) {
+      await cga.delay(1000)
+    } else {
+      break
+    }
+  }
+}
+
 const waitWorkingResult = async (timeoutMs: number = 1000): Promise<WorkingResult> => {
   return new Promise((resolve, reject) => {
     cga.AsyncWaitWorkingResult((err, result) => {
@@ -34,5 +45,6 @@ export {
   waitPlayerMenu,
   waitUnitMenu,
   waitWorkingResult,
+  waitForPositionChange,
 }
 

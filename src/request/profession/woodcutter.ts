@@ -4,7 +4,7 @@ import * as npc from '../../npc'
 import { forgetSkillBy, learnSkill } from '../../player/skill'
 import { log } from '../../utils'
 
-const getMengZongZhuCount = () => {
+export const getMengZongZhuCount = () => {
   const items = cga.getInventoryItems()
   const count = items
     .filter(i => i.name === '孟宗竹')
@@ -40,6 +40,7 @@ export const incomingWoodcutter = async () => {
     await cga.delay(1000)
   }
   // TODO: 怎么停止伐木呢？不会呢，只能直接回城
+  await move.falan.toStone('S')
 
   // 3. 将孟宗竹换成手斧
   await move.falan.toStone('S')
@@ -101,6 +102,7 @@ export const incomingWoodcutter = async () => {
     [509, 153, '山男的家'],
   ])
   await forgetSkillBy('伐木体验', '山男波波思')
+  await cga.delay(1000)
   await learnSkill('伐木')
 
   // 11. 学习急救和治伤

@@ -10,6 +10,9 @@ type Skill =
   | '制药'
   | '伐木' | '伐木体验'
   | '挖掘' | '挖掘体验'
+  | '狩猎' | '狩猎体验'
+  | '锻造体验'
+  | '造杖' | '造弓'
 
 export type GatheringSKill =
   | '伐木' | '伐木体验'
@@ -27,7 +30,10 @@ const Teachers: { skill: Skill, npc: string }[] = [
   { skill: '制药', npc: '见习药剂师吉可' },
   { skill: '伐木体验', npc: '募集樵夫的阿空' },
   { skill: '挖掘体验', npc: '募集矿工的洛伊' },
+  { skill: '锻造体验', npc: '募集打铁工的阿黑' },
   { skill: '挖掘', npc: '传说的矿工基尔' },
+  { skill: '造弓', npc: '造弓工飞利欧司' },
+  { skill: '造杖', npc: '造杖工泛吉翁' },
 ]
 
 const learnSkill = async (skill: Skill) => {
@@ -62,7 +68,12 @@ const forgetSkillBy = async (skill: Skill, npcName: string) => {
   cga.ClickNPCDialog(0, skillIndex) // 选择要遗忘的技能
   dlg = await waitNPCDialog()
   log(dlg)
-  cga.ClickNPCDialog(4, -1) // 确认
+  cga.ClickNPCDialog(4, -1) // 确认遗忘
+
+  // 弹出已成功遗忘的单确认框
+  dlg = await waitNPCDialog()
+  log(dlg)
+  cga.ClickNPCDialog(1, -1) // 确认
 
   while (cga.findPlayerSkill(skill)) {
     await cga.delay(1000)

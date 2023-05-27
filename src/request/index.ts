@@ -5,6 +5,7 @@ import * as battle from '../battle'
 import * as move from '../move'
 import * as profession from './profession'
 import { PetState, cga } from "../cga"
+import { keyOfMine } from "./keyOfMine"
 
 // 死者的戒指
 const ringOfDeath = async () => {
@@ -61,6 +62,9 @@ const doRequest = async (requestName: string) => {
       break
     case '就职药剂师':
       await profession.incomingPharmacist()
+      break
+    case '矿山的钥匙':
+      await keyOfMine()
       break
     default:
       throw new Error(`未知的任务名：${requestName}`)

@@ -51,9 +51,12 @@ const walkToStation = async (station: Station) => {
 
 const faceToStation = async (station: Station) => {
   if (isStationInMap(station, getCurrentMap())) {
-    const movablePositionsAround = getMovablePositionsAround(station.x, station.y)
+    let movablePositionsAround = getMovablePositionsAround(station.x, station.y)
     if (movablePositionsAround.length === 0) {
-      throw new Error(`无法到达地点：${JSON.stringify(station)}`)
+      movablePositionsAround = getMovablePositionsAround(station.x, station.y, 2)
+      if (movablePositionsAround.length === 0) {
+        throw new Error(`无法到达地点：${JSON.stringify(station)}`)
+      }
     }
     await walkTo(movablePositionsAround[0].x, movablePositionsAround[0].y)
     cga.turnTo(station.x, station.y)

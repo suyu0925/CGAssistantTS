@@ -48,13 +48,14 @@ const isPositionMovable = (x: number, y: number) => {
   return walls.matrix[y][x] == 0 && entries.findIndex(e => e.mapx == x && e.mapy == y) < 0
 }
 
-const getMovablePositionsAround = (x: number, y: number): MoveTarget[] => {
+const getMovablePositionsAround = (x: number, y: number, distance: number = 1): MoveTarget[] => {
   const result: MoveTarget[] = []
-  for (const o of AllOrientations) {
-    if (isPositionMovable(x + OrientationOffset[o].x, y + OrientationOffset[o].y)) {
+  const orientations = distance === 1 ? AllOrientations : [7, 9, 1, 3] as Orientation[]
+  for (const o of orientations) {
+    if (isPositionMovable(x + OrientationOffset[o].x * distance, y + OrientationOffset[o].y * distance)) {
       result.push({
-        x: x + OrientationOffset[o].x,
-        y: y + OrientationOffset[o].y,
+        x: x + OrientationOffset[o].x * distance,
+        y: y + OrientationOffset[o].y * distance,
         orientation: o,
       })
     }

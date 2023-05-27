@@ -69,6 +69,7 @@ const Items: Item[] = [
   { name: '风的水晶碎片', id: 18313, maxStackCount: 99, sellPrice: 0, type: ItemType.Item, },
   { name: '竹子', id: 18204, maxStackCount: 20, sellStackCount: 20, sellPrice: 24, type: ItemType.Wood, },
   { name: '孟宗竹', id: 18206, maxStackCount: 20, sellStackCount: 20, sellPrice: 28, type: ItemType.Wood, },
+  { name: '矿山钥匙', id: 18423, maxStackCount: 0, sellPrice: -1, type: ItemType.Item, },
 ]
 
 export {

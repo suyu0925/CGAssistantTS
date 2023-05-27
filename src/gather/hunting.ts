@@ -14,12 +14,19 @@ const HuntingProducts = [
       { name: '芙蕾雅', x: 697, y: 334 }, // 伊尔海边，杂点
     ], level: 3
   },
+  { name: '鹿皮', type: ItemType.Item, station: { name: '芙蕾雅', x: 596, y: 247 }, level: 1 }, // 鹿皮、蕃茄、鸡蛋混点，比例大概1：1：1
 ]
 
 const hunting = async (name: string) => {
   await prepare()
 
-  if (name === '蕃茄') {
+  if (name === '鹿皮') {
+    await move.falan.toStone('E')
+    await move.walkList([
+      [281, 88, '芙蕾雅'],
+      [596, 247, undefined],
+    ])
+  } else if (name === '蕃茄') {
     await move.falan.toStone('E')
     await move.walkList([
       [281, 88, '芙蕾雅'],

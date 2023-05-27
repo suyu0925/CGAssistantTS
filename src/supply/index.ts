@@ -12,8 +12,14 @@ const AutoSupplyOnTheRoadSettings: Partial<GuiSetting> = {
   }
 }
 
+const fullSupply = async () => {
+  await supplyHpMp()
+  await curePetsInEastHospital()
+}
+
 export {
   supplyHpMp as hpmp,
   AutoSupplyOnTheRoadSettings,
   curePetsInEastHospital,
+  fullSupply,
 }

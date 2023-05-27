@@ -4,6 +4,8 @@ import * as item from '../item'
 import { waitWorkingResult } from '../player'
 import { supplyHpMp } from '../supply/hpmp'
 import { log } from '../utils'
+import { craftBow } from './bow'
+import { craftStaff } from './staff'
 
 const PosionCrafts = [
   { craftIndex: 0, name: '生命力回复药（100）', meterials: [{ name: '苹果薄荷', count: 10 }, { name: '柠檬草', count: 1 }], mana: 20 },
@@ -56,5 +58,7 @@ const craftPosions = async (level?: number) => {
 
 export {
   craftPosions,
+  craftBow,
+  craftStaff,
 }
 

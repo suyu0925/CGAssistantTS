@@ -52,7 +52,13 @@ const loadGatheringSettings = async () => {
 }
 
 const loadGatheringItemWeakListSettings = async () => {
-  const allGatheringItems = Items.filter(item => item.type === ItemType.Wood || item.type === ItemType.Vanilla)
+  const allGatheringItems = Items.filter(item =>
+    item.type === ItemType.Wood
+    || item.type === ItemType.Vanilla
+    || item.type === ItemType.Mine
+    || item.type === ItemType.FoodMeterial
+    || item.type === ItemType.Fruit
+  )
   const gatheringItemWeakList = allGatheringItems.map(item => `${item.name}|${item.maxStackCount}`)
   const { itemtweaklist } = await getSettings()
   await loadSettings({

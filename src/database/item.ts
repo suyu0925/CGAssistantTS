@@ -5,8 +5,8 @@ export enum ItemType {
   Item = 26, // 物品
   Mine = 29, // 矿石类
   Wood = 30, // 木头类
-  FoodMeterial = 34, // 食材
-  FoodMeterial2 = 35, // 食材2？小麦粉
+  Fruit = 34, // 水果？目前只有蕃茄是这个类型。
+  FoodMeterial = 35, // 食材
   Vanilla = 36, // 香草类
   Card = 41, // 图鉴卡片。如果assessed为false，名字会是`卡片？`。
   Posion = 43, // 血瓶
@@ -24,18 +24,18 @@ export type Item = {
 
 const Items: Item[] = [
   { name: '铜', id: 9600, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.Mine, },
-  { name: '碎石头', id: 18209, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.Mine, },
+  { name: '铜条', id: 9611, maxStackCount: 20, sellStackCount: 20, sellPrice: 560, type: ItemType.Mine, },
   { name: '印度轻木', id: 10000, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.Wood, },
-  { name: '蕃茄', id: 12006, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.FoodMeterial, },
-  { name: '小麦粉', id: 12400, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.FoodMeterial2, },
-  { name: '牛奶', id: 12401, maxStackCount: 40, sellStackCount: 20, sellPrice: 36, type: ItemType.FoodMeterial2, },
-  { name: '鸡蛋', id: 12404, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.FoodMeterial2, },
+  { name: '蕃茄', id: 12006, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.Fruit, },
+  { name: '小麦粉', id: 12400, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.FoodMeterial, },
+  { name: '牛奶', id: 12401, maxStackCount: 40, sellStackCount: 20, sellPrice: 36, type: ItemType.FoodMeterial, },
+  { name: '鸡蛋', id: 12404, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.FoodMeterial, },
   { name: '苹果薄荷', id: 12800, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.Vanilla, },
   { name: '柠檬草', id: 12801, maxStackCount: 40, sellStackCount: 20, sellPrice: 36, type: ItemType.Vanilla, },
   { name: '蝴蝶花', id: 12802, maxStackCount: 40, sellStackCount: 20, sellPrice: 41, type: ItemType.Vanilla, },
   { name: '小石像怪的卡片', id: 14836, maxStackCount: 0, sellPrice: -1, type: ItemType.Card, },
   { name: '卡片？', id: 14848, maxStackCount: 0, sellPrice: -1, type: ItemType.Card, description: '未鉴定的卡片，不知道是哪个的' },
-  { name: '树精的卡片', id: 14875, maxStackCount: 0, sellPrice: -1, type: ItemType.Card, },
+  { name: '树精的卡片', id: 14875, maxStackCount: 0, sellPrice: 90, type: ItemType.Card, },
   { name: '盗贼的卡片', id: 14952, maxStackCount: 0, sellPrice: -1, type: ItemType.Card, },
   { name: '面包', id: 15201, maxStackCount: 3, sellPrice: -1, type: ItemType.Food, },
   { name: '生命力回复药（75）', id: 15605, maxStackCount: 3, sellPrice: -1, type: ItemType.Posion, },
@@ -54,6 +54,7 @@ const Items: Item[] = [
   { name: '樵夫推荐信', id: 18141, maxStackCount: 0, sellPrice: 0, type: ItemType.Item, },
   { name: '红头盔', id: 18194, maxStackCount: 0, sellPrice: 0, type: ItemType.Helm, },
   { name: '绿头盔', id: 18195, maxStackCount: 0, sellPrice: 0, type: ItemType.Helm, },
+  { name: '碎石头', id: 18209, maxStackCount: 40, sellStackCount: 20, sellPrice: 28, type: ItemType.Mine, },
   { name: '鹿皮', id: 18211, maxStackCount: 40, sellStackCount: 20, sellPrice: 24, type: ItemType.Item, },
   { name: '死者的戒指', id: 18218, maxStackCount: 0, sellPrice: 0, type: ItemType.Request, },
   { name: '赏赐状', id: 18219, maxStackCount: 0, sellPrice: 0, type: ItemType.Item, },

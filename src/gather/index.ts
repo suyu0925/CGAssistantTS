@@ -1,10 +1,10 @@
 import { HealthStatus, cga } from '../cga'
-import { trade } from '../item'
+import { trade, exchange } from '../item'
 import { GatheringSKill } from '../player/skill'
 import { log } from '../utils'
 import { ChopType, chopVanilla, chopWood } from './chopping'
 import { hunting } from './hunting'
-import { mining } from './mining'
+import { mining, zip } from './mining'
 
 const honeSkill = async (skill: GatheringSKill, subtype?: any) => {
   const honedSkill = cga.findPlayerSkill(skill)
@@ -27,8 +27,11 @@ const honeSkill = async (skill: GatheringSKill, subtype?: any) => {
       await trade.sellItems(['蕃茄', '鸡蛋', '牛奶', '小麦粉'])
       await hunting('鸡蛋')
     } else if (skill === '挖掘') {
-      await trade.sellItems(['铜', '碎石头'])
+      await trade.sellItems(['铜', '铜条'])
+      // await zip('铜')
       await mining('铜')
+      // await zip('铜')
+      // await exchange.saveToBank('铜条')
     }
 
     if (cga.GetPlayerInfo().health > HealthStatus.Yellow) {

@@ -31,6 +31,8 @@ export const Npcs: Npc[] = [
   { name: '测试者', station: { map: '灵堂', x: 54, y: 2 }, id: 7988, model_id: 17092, },
   { name: '鉴定师马尔弗', station: { map: '凯蒂夫人的店', x: 13, y: 9 }, id: 8018, model_id: 14014, },  // 矿工就职的任务链NPC
   { name: '矿工毕夫鲁', station: { map: '国营第24坑道 地下1楼', x: 35, y: 7 }, id: 8019, model_id: 14163, },  // 就职矿工的任务链NPC
+  { name: '樵夫弗伦', station: { map: '法兰城', x: 106, y: 191 }, timeOfDay: 'day', id: 8026, model_id: 14108, }, // 就职樵夫任务。手斧换树苗。饼干换樵夫推荐信。
+  { name: '种树的阿姆罗斯', station: { map: '法兰城', x: 134, y: 36 }, timeOfDay: 'day', id: 8027, model_id: 14025, }, // 就职樵夫任务。树苗换水色的花？。
   { name: '那尔薇', station: { map: '毕夫鲁的家', x: 8, y: 3 }, id: 8031, model_id: 14022, },  // 就职矿工的任务链NPC
   { name: '矿工吉拉瓦特', station: { map: '圣村村长的家 2楼', x: 8, y: 4 }, id: 9848, model_id: 14162, },  // 矿工的就职导师
   { name: '传说的矿工基尔', station: { map: '基尔的家', x: 9, y: 2 }, id: 9746, model_id: 14027, },  // 学习`挖掘`技能
@@ -48,12 +50,15 @@ export const Npcs: Npc[] = [
   { name: '资深护士菲儿', station: { map: '东医', x: 6, y: 33 }, id: 8917, model_id: 14152, },
   { name: '矿工潘丹', station: { map: '芙蕾雅', x: 472, y: 316 }, id: 8652, model_id: 14163, }, // 战斗系20级进熊洞
   { name: '护士尤美儿', station: { map: '东医', x: 8, y: 30 }, id: 8897, model_id: 14090, },
+  { name: '贝特里夫医师', station: { map: '东医', x: 11, y: 18 }, id: 9256, model_id: 14088, }, // 治疗宠物
   { name: '护士米露卡', station: { map: '回廊', x: 26, y: 22 }, id: 9158, model_id: 14089, supply: true, },
   { name: '专管称号的阿蒙', station: { map: '法兰城', x: 230, y: 83 }, id: 9168, model_id: 14100, },
   { name: '魔术师比尔艾特', station: { map: '魔女之家', x: 22, y: 9 }, id: 9206, model_id: 14044, }, // 学陨石魔法
   { name: '魔术师班裘', station: { map: '魔女之家', x: 21, y: 8 }, id: 9208, model_id: 14033, }, // 学冰冻魔法
   { name: '魔术师多萨德', station: { map: '魔女之家', x: 22, y: 17 }, id: 9210, model_id: 14030, }, // 学火焰魔法
   { name: '魔术师帕索比亚纳', station: { map: '魔女之家', x: 21, y: 14 }, id: 9212, model_id: 14046, }, // 学风刃魔法
+  { name: '护士贝耶', station: { map: '维村医院', x: 13, y: 5 }, id: 9229, model_id: 14089, },
+  { name: '资深护士蕾丹', station: { map: '维村医院', x: 15, y: 7 }, id: 9244, model_id: 14152, },
   { name: '见习药剂师吉可', station: { map: '西医', x: 12, y: 5 }, id: 9390, model_id: 14090, }, // 学习制药
   { name: '护士娜芝', station: { map: '西医', x: 12, y: 30 }, id: 9403, model_id: 14159, }, // 学习急救
   { name: '伯舒医师', station: { map: '西医', x: 10, y: 5 }, id: 9405, model_id: 14088, }, // 学习治疗
@@ -61,10 +66,7 @@ export const Npcs: Npc[] = [
   { name: '狄尔西雅达美', station: { map: '魔女之家', x: 19, y: 13 }, id: 9441, model_id: 14506, }, // 魔术师就职导师
   { name: '药剂师柯尼', station: { map: '圣村医院 2楼', x: 12, y: 5 }, id: 9491, model_id: 14027, }, // 药剂师就职导师
   { name: '募集樵夫的阿空', station: { map: '职业介绍所', x: 8, y: 11 }, id: 9416, model_id: 14075, }, // 学习伐木体验
-  { name: '樵夫弗伦', station: { map: '法兰城', x: 106, y: 191 }, timeOfDay: 'day', id: 8026, model_id: 14108, }, // 就职樵夫任务。手斧换树苗。饼干换樵夫推荐信。
-  { name: '种树的阿姆罗斯', station: { map: '法兰城', x: 134, y: 36 }, timeOfDay: 'day', id: 8027, model_id: 14025, }, // 就职樵夫任务。树苗换水色的花？。
-  { name: '护士贝耶', station: { map: '维村医院', x: 13, y: 5 }, id: 9229, model_id: 14089, },
-  { name: '资深护士蕾丹', station: { map: '维村医院', x: 15, y: 7 }, id: 9244, model_id: 14152, },
+  { name: '交换铜', station: { map: '米克尔工房', x: 26, y: 4 }, id: 9476, model_id: 14076, },
   { name: '樵夫荷拉巴斯', station: { map: '职业介绍所', x: 7, y: 11 }, id: 9844, model_id: 14161, }, // 樵夫就职导师
   { name: '平民防具贩售处', station: { map: '法兰城', x: 156, y: 122 }, id: 14561, model_id: 14183, },
 ]

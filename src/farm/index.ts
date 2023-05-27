@@ -38,6 +38,7 @@ const prepare = async () => {
   await item.trade.sellStones()
   await item.trade.buyPotions(cga.GetPlayerInfo().maxhp)
   await supply.hpmp()
+  await supply.curePetsInEastHospital()
 
   await loadingItemDropList()
 }

@@ -1,14 +1,40 @@
 import { cga } from '../cga'
 import { ItemType } from '../database/item'
-import { prepare } from '../farm'
+import * as npc from '../npc'
 import * as move from '../move'
-import { dropLowPriceItems, waitForBagFullSafely } from './utils'
+import { log } from '../utils'
+import { dropLowPriceItems, prepare, waitForBagFullSafely } from './utils'
 
 const MiningProducts = [
   { name: '铜', type: ItemType.FoodMeterial, station: { name: '芙蕾雅', x: 551, y: 163 }, level: 1 },
 ]
 
 type MiningProduct = typeof MiningProducts[number]['name']
+
+// 压条
+const zip = async (name: MiningProduct) => {
+  let npcName: string
+  if (name === '铜') {
+    npcName = `交换${name}`
+  } else {
+    log(`不支持交换${name}`)
+    return
+  }
+  const productName = `${name}条`
+
+  const zipCount = Math.floor(cga.getItemCount(name) / 20)
+  if (zipCount === 0) {
+    log(`没有要压的${productName}`)
+  }
+
+  await move.falan.toStone('W')
+  await move.walkList([
+    [100, 61, '米克尔工房'],
+  ])
+  await npc.talkToNpc(npcName, npc.DefaultDialogStrategies.FirstOnce)
+  cga.BuyNPCStore([{ index: 0, count: zipCount }])
+  log(`压好了${productName}：${cga.getItemCount(productName)}根`)
+}
 
 const mining = async (name: MiningProduct) => {
   await prepare()
@@ -35,5 +61,6 @@ const mining = async (name: MiningProduct) => {
 
 export {
   mining,
+  zip,
 }
 

@@ -6,6 +6,10 @@ const saveAllToBank = async () => {
   throw new Error('not implemented')
 }
 
+const saveToBank = async (nameOrId: string | number) => {
+  throw new Error('not implemented')
+}
+
 const moveItemsBetweenPlayers = async (fromPlayer: string, toPlayer: string, station: Station, filter: (item: InventoryItem) => boolean) => {
   const giver = fromPlayer === cga.GetPlayerInfo().name
   const receiver = toPlayer === cga.GetPlayerInfo().name
@@ -24,5 +28,6 @@ const moveItemsBetweenPlayers = async (fromPlayer: string, toPlayer: string, sta
 
 export {
   saveAllToBank,
+  saveToBank,
 }
 

@@ -1,8 +1,7 @@
 import { cga } from '../cga'
 import { ItemType } from '../database/item'
-import { prepare } from '../farm'
 import * as move from '../move'
-import { dropLowPriceItems, waitForBagFullSafely } from './utils'
+import { dropLowPriceItems, prepare, waitForBagFullSafely } from './utils'
 
 const HuntingProducts = [
   { name: '蕃茄', type: ItemType.FoodMeterial, station: { name: '芙蕾雅', x: 551, y: 163 }, level: 1 },

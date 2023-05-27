@@ -5,7 +5,7 @@ import { log } from '../utils'
 
 const isSomeoneInDanger = () => {
   const teamPlayers = cga.getTeamPlayers()
-  return teamPlayers.some(p => p.hp < p.maxhp * 0.2)
+  return teamPlayers.some(p => p.hp < p.maxhp * 0.3)
 }
 
 const isSomeoneInjured = () => {

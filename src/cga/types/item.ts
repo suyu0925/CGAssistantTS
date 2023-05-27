@@ -28,6 +28,7 @@ export interface IItemApi {
   getInventoryItems: () => InventoryItem[]
   // 所有物品，包括身上的装备
   GetItemsInfo: () => InventoryItem[]
+  getItemCount: (nameOrId: string | number) => number
 
   SellNPCStore: (sellItems: SellItem[]) => void
   BuyNPCStore: (buyItems: BuyItem[]) => void

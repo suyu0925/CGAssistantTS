@@ -80,7 +80,7 @@ const sellPosions = async () => {
   log('卖完药瓶啦')
 }
 
-const sellNpcStone = async (dlg: Dialog) => {
+export const sellNpcStone = async (dlg: Dialog) => {
   const numOpt = dlg.message.charAt(dlg.message.length - 1)
   cga.ClickNPCDialog(0, numOpt == '3' ? 1 : 0)
 

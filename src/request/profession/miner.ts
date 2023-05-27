@@ -112,12 +112,13 @@ const incomingMiner = async () => {
     [200, 132, '基尔的家'],
   ])
   await forgetSkillBy('挖掘体验', '传说的矿工基尔')
+  await cga.delay(1000) // 遗忘技能和学习技能需要有一个间隔，否则容易出错
   await learnSkill('挖掘')
 
   // 有多余的钱就学点必备技能
   if (cga.GetPlayerInfo().gold > 400) {
     // 10. 学急救和治疗
-    await move.falan.toEastHospital()
+    await move.falan.toWestHospital()
     await learnSkill('急救')
     await learnSkill('治疗')
 

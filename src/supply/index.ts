@@ -1,5 +1,6 @@
 import { GuiSetting } from '../cga/types/gui'
 import { supplyHpMp } from './hpmp'
+import { curePetsInEastHospital } from './injury'
 
 const AutoSupplyOnTheRoadSettings: Partial<GuiSetting> = {
   player: {
@@ -14,4 +15,5 @@ const AutoSupplyOnTheRoadSettings: Partial<GuiSetting> = {
 export {
   supplyHpMp as hpmp,
   AutoSupplyOnTheRoadSettings,
+  curePetsInEastHospital,
 }

@@ -104,7 +104,7 @@ export const incomingWoodcutter = async () => {
   await learnSkill('伐木')
 
   // 11. 学习急救和治伤
-  await move.falan.toEastHospital()
+  await move.falan.toWestHospital()
   await learnSkill('急救')
   await learnSkill('治疗')
 

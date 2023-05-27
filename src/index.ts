@@ -19,11 +19,12 @@ import { learnSkill } from './player/skill'
 import { learnSingleTargetElementSpells } from './request/profession/mage'
 import * as request from './request'
 import { chopWood, chopVanilla, ChopType } from './gather/chopping'
-import { cureByself } from './supply/injury'
+import { cureByself, curePetsInEastHospital } from './supply/injury'
 import { craftPosions } from './craft'
 import { getSellPosionItems } from './item/trade'
 import * as trade from './item/trade'
 import { incomingMiner } from './request/profession'
+import { zip } from './gather'
 
 bootstrap()
   .then(async () => {
@@ -35,8 +36,9 @@ bootstrap()
     // log(cga.GetPlayerInfo())
 
     // log(cga.getMapInfo())
-    // log(cga.findNPC('传说的矿工基尔'))
+    // log(cga.findNPC('贝特里夫医师'))
     // await incomingMiner()
+    // await curePetsInEastHospital()
 
     // log(await findPathToStation({ map: '召唤之间', x: 19, y: 6 }))
     // await buyPotions(cga.GetPlayerInfo().maxhp)
@@ -64,8 +66,8 @@ bootstrap()
 
     // 采集系
     // await gather.honeSkill('伐木', ChopType.Vanilla)
-    // await trade.sellItems(['蕃茄', '鸡蛋', '牛奶', '小麦粉'])
     // await gather.honeSkill('挖掘')
+    // await gather.honeSkill('狩猎')
     // await trade.sellItems(['苹果薄荷', '柠檬草', '蝴蝶花'])
     // await chopVanilla(1)
 

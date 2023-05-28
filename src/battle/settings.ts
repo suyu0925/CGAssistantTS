@@ -66,6 +66,41 @@ const useRandomSingleTargetSpell = async () => {
   await loadSettings(settings)
 }
 
+// 使用指定的单体魔法
+const useSingleTargetSpell = async (spell: Skill) => {
+  const singleStormSpell = cga.findPlayerSkill(spell)
+  if (!singleStormSpell) {
+    // 没学spell
+    return
+  }
+
+  const settings: Partial<GuiSetting> = {
+    battle: {
+      list: [
+        {
+          condition: 0,
+          condition2: 0,
+          condition2rel: 0,
+          condition2val: '',
+          conditionrel: 0,
+          conditionval: '',
+          index: 0,
+          petaction: 100,
+          petskillname: '攻击',
+          pettarget: 0,
+          pettargetsel: 0,
+          playeraction: 100,
+          playerskilllevel: 0,
+          playerskillname: spell,
+          playertarget: 0,
+          playertargetsel: 0
+        }
+      ]
+    }
+  }
+  await loadSettings(settings)
+}
+
 const loadAutoBattleSettings = async () => {
   await loadSettings(NormalAttack)
 
@@ -77,5 +112,6 @@ const loadAutoBattleSettings = async () => {
 export {
   NormalAttack,
   loadAutoBattleSettings,
+  useSingleTargetSpell,
 }
 

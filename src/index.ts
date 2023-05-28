@@ -3,7 +3,7 @@ import { findPathToStation, searchLinks } from './database/link'
 import { hydrateNpc } from './database/npc'
 import * as npc from './npc'
 import { DefaultDialogStrategies } from './npc/dialog'
-import { loadSettings, log } from './utils'
+import { loadSettings, log, observeLingtangTime, observeShenmu } from './utils'
 import { doRequest } from './request'
 import * as battle from './battle'
 import * as supply from './supply'
@@ -54,9 +54,11 @@ bootstrap()
     //   [509, 154, '芙蕾雅'],
     // ])
     // await farm.farm('树精', '=一瓶药=')
-    // await farm.farm('灵堂')
-    log(cga.GetWorldStatus())
-    log(cga.GetGameStatus())
+    await farm.farm('灵堂')
+    // log(cga.GetWorldStatus())
+    // log(cga.GetGameStatus())
+    // await observeLingtangTime()
+    // await observeShenmu()
     // await battle.encounter()
     // await move.register('维村')
     // await shujing()

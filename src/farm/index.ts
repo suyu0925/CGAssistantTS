@@ -1,10 +1,12 @@
 import { encounter } from '../battle'
+import { useSingleTargetSpell } from '../battle/settings'
 import { cga } from '../cga'
 import { Stations } from '../database/map'
 import * as item from '../item'
 import * as move from '../move'
 import * as npc from '../npc'
 import { profession } from '../player'
+import { getPlayerProfession } from '../player/profession'
 import * as supply from '../supply'
 import * as team from '../team'
 import { getSettings, loadSettings, log } from '../utils'
@@ -55,6 +57,22 @@ const shujing = async (teamLeader?: string) => {
 }
 
 const lintang = async (teamLeader?: string) => {
+  const isTHeDeppest = () => {
+    if (cga.GetMapName() === '城内的地下迷宫地下9楼'
+      || cga.GetMapName() === '城内的地下迷宫地下10楼'
+      || cga.GetMapName() === '城内的地下迷宫地下11楼'
+    ) {
+      // 最底层有3个入口：
+      // 红色传送水晶：[10, 15]
+      // 从上一层下来的入口：[10, 19]
+      // 打完阴影离开的楼梯：[12, 7]
+      // 可以用这个数据来加强判断
+      return true
+    } else {
+      return false
+    }
+  }
+
   if (cga.GetPlayerInfo().level < 10) {
     log(`灵堂练级最低等级是10级，当前${cga.GetPlayerInfo().level}级，等级不足`)
     return
@@ -72,6 +90,11 @@ const lintang = async (teamLeader?: string) => {
   await move.waitForMapChanged('封印之间')
   await team.buildTeam(teamLeader, { map: '封印之间', x: 15, y: 3 })
 
+  // 法系用单地砸幽灵
+  if (getPlayerProfession().category === '魔法系' || getPlayerProfession().category === '采集系') {
+    await useSingleTargetSpell('陨石魔法')
+  }
+
   if (team.isTeamLeader()) {
     await move.walkList([
       [15, 18, '城内的地下迷宫地下1楼'],
@@ -79,7 +102,7 @@ const lintang = async (teamLeader?: string) => {
     try {
       while (true) {
         await move.walkRandomMaze()
-        if (cga.GetMapName() === '城内的地下迷宫地下9楼') {
+        if (isTHeDeppest()) {
           break
         }
       }

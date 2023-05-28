@@ -114,5 +114,12 @@ export const hydrateNpc = (dehydratedNpc: DehydratedNpc): Npc | null => {
   if (!npc && typeof dehydratedNpc === 'string') {
     npc = findNearbyNpc(dehydratedNpc)
   }
+
+  if (npc.station.range) {
+    // 针对随机位置的NPC，只使用当前位置
+    const now = cga.findNPC(npc.name)
+    npc.station.x = now.xpos
+    npc.station.y = now.ypos
+  }
   return npc
 }

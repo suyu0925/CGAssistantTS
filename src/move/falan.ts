@@ -1,9 +1,10 @@
 import { promisify } from 'util'
 import { cga, FalanPortal } from '../cga'
+import { getCurrentMap, isSameMap } from '../database/map'
 import * as move from '../move'
 import * as npc from '../npc'
-import { getCurrentMap, isSameMap } from '../database/map'
 import { sayWords } from '../player'
+import { log } from '../utils'
 
 const toStone = async (portal: FalanPortal) => {
   await promisify(cga.travel.falan.toStone)(portal)
@@ -37,15 +38,18 @@ const toWitchHouse = async () => {
     return
   }
 
-  // 11. 学2个单体魔法
   await move.falan.toStone('W')
   await move.walkList([
     [22, 88, '芙蕾雅西边'],
     [298, 148, undefined],
   ])
+
   await npc.waitForNpc('神木')
-  await npc.faceToNPC('神木')
+  await npc.talkToNpc('神木', npc.DefaultDialogStrategies.Confirm)
   sayWords('魔术')
+  const dlg = await npc.waitNPCDialog()
+  log(dlg)
+  cga.ClickNPCDialog(1, -1)
   await move.waitForMapChanged('魔女之家')
 }
 
